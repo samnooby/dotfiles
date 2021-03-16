@@ -68,6 +68,8 @@ terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
+beautiful.font = "TerminessTTF Nerd Font Mono 20"
+
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
@@ -82,14 +84,14 @@ awful.layout.layouts = {
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
+    --awful.layout.suit.fair,
+    --awful.layout.suit.fair.horizontal,
+    --awful.layout.suit.spiral,
+    --awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.corner.nw,
+    --awful.layout.suit.magnifier,
+    --awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
@@ -110,8 +112,11 @@ mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesom
                                     { "Terminal", terminal },
                                     { "Code", function () awful.spawn("code") end },
                                     { "Web", function () awful.spawn("firefox") end },
+                                    { "Discord", function () awful.spawn("apulse discord") end },
+                                    { "nnn", terminal .. " -e nnn" },
                                   }
                         })
+
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -184,8 +189,11 @@ awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
-    -- Each screen has its own tag table.
-    awful.tag({ "Main", "Web", "Code", "Terminal", "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
+    local names = { "Main", " School", " Code", " Terminal", " Files", " Misc" }
+    local l = awful.layout.suit  -- Just to save some typing: use an alias.
+    local layouts = { l.tile, l.tile, l.tile, l.max, l.max,
+        l.floating }
+    awful.tag(names, s, layouts)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -247,6 +255,7 @@ globalkeys = gears.table.join(
     -- Sam's Keybindings
     awful.key({ modkey }, "#87", function() awful.spawn("code") end),
     awful.key({ modkey }, "#88", function() awful.spawn("firefox") end),
+    awful.key({ modkey }, "#89", function() awful.spawn("apulse discord") end),
 
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -519,8 +528,8 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+     { rule = { class = "code" },
+       properties = { screen = 1, tag = " Code" } },
 }
 -- }}}
 
