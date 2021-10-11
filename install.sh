@@ -42,3 +42,9 @@ elif [[ ! -d $OLDDIR ]]; then
 	echo "Could not find $OLDDIR"
 	exit
 fi
+
+#Installs all pacman requirements, saves all old requirements to file
+if [[ $INSTALL == True ]]; then
+	pacman -Qqen > $OLDDIR/requirements.txt
+	pacman -S - < $INSTALLDIR/requirements.txt
+fi
