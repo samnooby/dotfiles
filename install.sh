@@ -48,3 +48,13 @@ if [[ $INSTALL == True ]]; then
 	pacman -Qqen > $OLDDIR/requirements.txt
 	pacman -S - < $INSTALLDIR/requirements.txt
 fi
+
+
+#Installs all the files and saves all old configs to the olddir
+if [[ -d $HOMEDIR/.config  ]]; then
+	echo "Saving old .config file"
+	mv $HOMEDIR/.config $OLDDIR/.config
+fi
+
+
+ln -s $INSTALLDIR/.config $HOMEDIR/.config
