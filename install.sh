@@ -63,11 +63,6 @@ if [[ $RESTORE == True ]]; then
 		mv $OLDDIR/.xsession $HOMEDIR
 	fi
 
-	if [[ -d $OLDDIR/.vscode ]]; then
-		unlink $HOMEDIR/.vscode
-		mv $OLDDIR/.vscode $OLDDIR
-	fi
-	
 	exit
 fi
 
@@ -94,14 +89,8 @@ if [[ -f $HOMEDIR/.xsession ]]; then
 	mv $HOMEDIR/.xsession $OLDDIR/.xsession
 fi
 
-if [[ -d $HOMEDIR/.vscode ]];then
-	echo "Saving old .vscode"
-	mv $HOMEDIR/.vscode $OLDDIR/.vscode
-fi
-
 ln -s $INSTALLDIR/.config $HOMEDIR/.config
 ln -s $INSTALLDIR/.bashrc $HOMEDIR/.bashrc
 ln -s $INSTALLDIR/.xsession $HOMEDIR/.xsession
-ln -s $INSTALLDIR/.vscode $HOMEDIR/.vscode
 
 systemctl enable --now xdm.service
