@@ -92,3 +92,5 @@ fi
 ln -s $INSTALLDIR/.config $HOMEDIR/.config
 ln -s $INSTALLDIR/.bashrc $HOMEDIR/.bashrc
 ln -s $INSTALLDIR/.xsession $HOMEDIR/.xsession
+
+systemctl enable --now xdm.service
