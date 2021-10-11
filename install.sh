@@ -61,6 +61,11 @@ if [[ -f $HOMEDIR/.bashrc ]]; then
 	mv $HOMEDIR/.bashrc $OLDDIR/.bashrc
 fi
 
+if [[ -f $HOMEDIR/.xsession ]]; then
+	echo "Saving old .xsession"
+	mv $HOMEDIR/.xsession $OLDDIR/.xsession
+fi
 
 ln -s $INSTALLDIR/.config $HOMEDIR/.config
 ln -s $INSTALLDIR/.bashrc $HOMEDIR/.bashrc
+ln -s $INSTALLDIR/.xsession $HOMEDIR/.xsession
