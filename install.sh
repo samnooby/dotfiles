@@ -43,6 +43,29 @@ elif [[ ! -d $OLDDIR ]]; then
 	exit
 fi
 
+#TODO: RESTORE OLD CONFIGS IF FLAG IS SET
+if [[ $RESTORE == True ]]; then
+	echo "Restoring configs from ${OLDDIR}"
+
+	#Unlinks all files and moves them back from the old directory
+	if [[ -d $OLDDIR/.config  ]]; then
+		unlink $HOMEDIR/.config
+		mv $OLDDIR/.config $HOMEDIR
+	fi
+
+	if [[ -f $OLDDIR/.bashrc ]]; then
+		unlink $HOMEDIR/.bashrc
+		mv $OLDDIR/.bashrc $HOMEDIR
+	fi
+
+	if [[ -f $OLDDIR/.xsession ]]; then
+		unlink $HOMEDIR/.xsession
+		mv $OLDDIR/.xsession $HOMEDIR
+	fi
+	
+	exit
+fi
+
 #Installs all pacman requirements, saves all old requirements to file
 if [[ $INSTALL == True ]]; then
 	pacman -Qqen > $OLDDIR/requirements.txt
