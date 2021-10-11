@@ -56,5 +56,11 @@ if [[ -d $HOMEDIR/.config  ]]; then
 	mv $HOMEDIR/.config $OLDDIR/.config
 fi
 
+if [[ -f $HOMEDIR/.bashrc ]]; then
+	echo "Saving old .bashrc"
+	mv $HOMEDIR/.bashrc $OLDDIR/.bashrc
+fi
+
 
 ln -s $INSTALLDIR/.config $HOMEDIR/.config
+ln -s $INSTALLDIR/.bashrc $HOMEDIR/.bashrc
