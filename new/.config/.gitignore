@@ -1,0 +1,10 @@
+Code - OSS/*
+!Code - OSS/User
+Code - OSS/User/*
+!Code - OSS/User/settings.json
+
+code - oss/
+discord/
+pulse/
+dconf/
+gtk-3.0

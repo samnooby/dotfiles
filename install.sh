@@ -3,7 +3,7 @@
 #Default values that are chosen if no flags are set
 HOMEDIR="/home/$(logname)"
 OLDDIR="$(pwd)/old"
-INSTALLDIR="$(pwd)"
+INSTALLDIR="$(pwd)/new"
 RESTORE=False
 INSTALL=True
 
