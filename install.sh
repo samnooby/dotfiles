@@ -6,6 +6,7 @@ OLDDIR="$(pwd)/old"
 INSTALLDIR="$(pwd)/new"
 RESTORE=False
 INSTALL=True
+KEEP_OLD=False
 
 #Gets all the flags from the command line
 while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
@@ -17,6 +18,7 @@ while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
 		echo "-r (--restore) Restore config before last install, only valid after installation has happened once"
 		echo "-o (--old-dir) Change the directory that old config is saved to"
 		echo "-n (--no-install) moves all appropriate files but does not install packages"
+		echo "-k (--keep-old) Merges old config files in to keep some config settings"
 		exit
 		;;
 	-d | --dir )
@@ -30,6 +32,9 @@ while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
 		;;
 	-n | --no-install )
 		INSTALL=False
+		;;
+	-k | --keep-old )
+		KEEP_OLD=True
 		;;
 esac; shift; done
 if [[ "$1" == '--' ]]; then shift; fi
@@ -72,19 +77,29 @@ if [[ $INSTALL == True ]]; then
 	pacman -S - < $INSTALLDIR/requirements.txt
 fi
 
+rm -rf $INSTALLDIR/.config
+cp -rT $(pwd)/.config $INSTALLDIR/.config
 
 #Installs all the files and saves all old configs to the olddir
 if [[ -d $HOMEDIR/.config  ]]; then
-	echo "Saving old .config file"
-	mv $HOMEDIR/.config $OLDDIR/.config
+	echo "Saving old .config folder"
+	if [[ -d $OLDDIR/.config || -h $OLDDIR/.config  ]]; then
+		echo "Removing saved old config file"
+		rm -rf $OLDDIR/.config
+	fi
+	mv $HOMEDIR/.config $OLDDIR/
+	if [[ $KEEP_OLD == True ]]; then
+		echo "Merging config folder"
+		cp -RT $OLDDIR/.config $INSTALLDIR/.config
+	fi
 fi
 
-if [[ -f $HOMEDIR/.bashrc ]]; then
+if [[ -f $HOMEDIR/.bashrc || -h $HOMEDIR/.bashrc ]]; then
 	echo "Saving old .bashrc"
 	mv $HOMEDIR/.bashrc $OLDDIR/.bashrc
 fi
 
-if [[ -f $HOMEDIR/.xsession ]]; then
+if [[ -f $HOMEDIR/.xsession || -h $HOMEDIR/.xsession ]]; then
 	echo "Saving old .xsession"
 	mv $HOMEDIR/.xsession $OLDDIR/.xsession
 fi
@@ -93,4 +108,4 @@ ln -s $INSTALLDIR/.config $HOMEDIR/.config
 ln -s $INSTALLDIR/.bashrc $HOMEDIR/.bashrc
 ln -s $INSTALLDIR/.xsession $HOMEDIR/.xsession
 
-systemctl enable --now xdm.service
+# systemctl enable --now xdm.service
