@@ -74,9 +74,14 @@ if [[ $RESTORE == True ]]; then
 		mv $OLDDIR/.xbindkeysrc $HOMEDIR
 	fi
 
-	if [[ -f $OLDDIR/fonts ]]; then
+	if [[ -d $OLDDIR/fonts ]]; then
 		unlink /usr/local/share/fonts
 		mv $OLDDIR/fonts /usr/local/share/fonts
+	fi
+
+	if [[ -d $OLDDIR/backgrounds ]]; then
+		unlink /usr/local/share/backgrounds
+		mv $OLDDIR/backgrounds /usr/local/share/backgrounds
 	fi
 
 	if [[ -f $OLDDIR/Xresources ]]; then
@@ -87,6 +92,11 @@ if [[ $RESTORE == True ]]; then
 	if [[ -f $OLDDIR/Xsetup_0 ]]; then
 		unlink /etc/X11/xdm/Xsetup_0
 		mv $OLDDIR/Xsetup_0 /etc/X11/xdm/Xsetup_0
+	fi
+
+	if [[ -f $OLDDIR/.bash_profile ]]; then
+		unlink $HOMEDIR/.bash_profile
+		mv $OLDDIR/.bash_profile $HOMEDIR
 	fi
 
 	exit
@@ -158,6 +168,19 @@ fi
 
 ln -s $INSTALLDIR/fonts /usr/local/share/fonts
 
+# Installs the systems font
+if [[ -d /usr/local/share/backgrounds ]]; then
+	echo "Saving old backgrounds folder"
+	# Removes old backgrounds folder
+	if [[ -d $OLDDIR/backgrounds || -h $OLDDIR/backgrounds  ]]; then
+		rm -rf $OLDDIR/backgrounds
+	fi
+
+	mv /usr/local/share/backgrounds $OLDDIR
+fi
+
+ln -s $INSTALLDIR/backgrounds /usr/local/share/backgrounds
+
 #Install XDM settings
 if [[ -f /etc/X11/xdm/Xresources ]]; then
 	echo "Saving old Xresources file"
@@ -173,6 +196,13 @@ fi
 
 ln -s $INSTALLDIR/Xsetup_0 /etc/X11/xdm/Xsetup_0
 
+#Installs the bash_profile
+if [[ -f $HOMEDIR/.bash_profile ]]; then
+	echo "Saving old .bash_profile"
+	mv $HOMEDIR/.bash_profile $OLDDIR/.bash_profile
+fi
+
+ln -s $INSTALLDIR/.bash_profile $HOMEDIR/.bash_profile
 
 chown -R $(logname) $INSTALLDIR
 # systemctl enable --now xdm.service
