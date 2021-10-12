@@ -75,8 +75,10 @@ if [[ $RESTORE == True ]]; then
 	fi
 
 	if [[ -f $OLDDIR/fonts ]]; then
-		unlink $HOMEDIR/.local/share/fonts
-		mv $OLDDIR/fonts $HOMEDIR/.local/share/fonts
+		unlink /usr/local/share/fonts
+		mv $OLDDIR/fonts /usr/local/share/fonts
+	fi
+
 	fi
 
 	exit
@@ -136,29 +138,19 @@ fi
 ln -s $INSTALLDIR/.xbindkeysrc $HOMEDIR/.xbindkeysrc
 
 # Installs the systems font
-if [[ -d $HOMEDIR/.local/share/fonts ]]; then
+if [[ -d /usr/local/share/fonts ]]; then
 	echo "Saving old fonts folder"
 	# Removes old fonts folder
 	if [[ -d $OLDDIR/fonts || -h $OLDDIR/fonts  ]]; then
 		rm -rf $OLDDIR/fonts
 	fi
 
-	mv $HOMEDIR/.local/share/fonts $OLDDIR
+	mv /usr/local/share/fonts $OLDDIR
 fi
 
-if [[ ! -d $HOMEDIR/.local ]]; then
-	mkdir $HOMEDIR/.local
-fi
-
-if [[ ! -d $HOMEDIR/.local/share ]]; then
-	mkdir $HOMEDIR/.local/share
-fi
-
-ln -s $INSTALLDIR/fonts $HOMEDIR/.local/share/fonts
-chown -R $(logname) $HOMEDIR/.local
+ln -s $INSTALLDIR/fonts /usr/local/share/fonts
 
 #Install XDM settings
-
 if [[ -f /etc/X11/xdm/Xresources ]]; then
 	echo "Saving old Xresources file"
 	mv /etc/X11/xdm/Xresources $OLDDIR/Xresources
