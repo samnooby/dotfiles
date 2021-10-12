@@ -110,8 +110,6 @@ if [[ -d $HOMEDIR/.config  ]]; then
 fi
 
 ln -s $INSTALLDIR/.config $HOMEDIR/.config
-chown -R $(logname) $HOMEDIR/.config
-
 
 # Install the .bashrc
 if [[ -f $HOMEDIR/.bashrc || -h $HOMEDIR/.bashrc ]]; then
@@ -168,4 +166,6 @@ fi
 
 ln -s $INSTALLDIR/Xresources /etc/X11/xdm/Xresources
 
+
+chown -R $(logname) $INSTALLDIR
 # systemctl enable --now xdm.service
