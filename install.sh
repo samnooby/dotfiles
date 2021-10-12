@@ -111,4 +111,19 @@ fi
 
 ln -s $INSTALLDIR/.xsession $HOMEDIR/.xsession
 
+# Installs the systems font
+if [[ -d $HOMEDIR/.local/share/fonts ]]; then
+	mv $HOMEDIR/.local/share/fonts $OLDDIR
+fi
+
+if [[ ! -d $HOMEDIR/.local ]]; then
+	mkdir $HOMEDIR/.local
+fi
+
+if [[ ! -d $HOMEDIR/.local/share ]]; then
+	mkdir $HOMEDIR/.local/share
+fi
+
+ln -s $INSTALLDIR/fonts $HOMEDIR/.local/share/fonts
+
 # systemctl enable --now xdm.service
