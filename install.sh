@@ -84,6 +84,7 @@ fi
 
 #Installs all pacman requirements, saves all old requirements to file
 if [[ $INSTALL == True ]]; then
+	echo "Installing pacman packages..."
 	pacman -Qqen > $OLDDIR/requirements.txt
 	pacman -S - < $INSTALLDIR/requirements.txt
 fi
@@ -93,7 +94,8 @@ cp -rT $(pwd)/.config $INSTALLDIR/.config
 
 # Installs config folder in home directory
 if [[ -d $HOMEDIR/.config  ]]; then
-	# Removes old config folder
+	echo "Saving old config folder"
+	# Removes old config folder1
 	if [[ -d $OLDDIR/.config || -h $OLDDIR/.config  ]]; then
 		rm -rf $OLDDIR/.config
 	fi
@@ -102,6 +104,7 @@ if [[ -d $HOMEDIR/.config  ]]; then
 
 	# Merges config folders if flag given
 	if [[ $KEEP_OLD == True ]]; then
+		echo "Merging config files"
 		cp -RT $OLDDIR/.config $INSTALLDIR/.config
 	fi
 fi
@@ -110,6 +113,7 @@ ln -s $INSTALLDIR/.config $HOMEDIR/.config
 
 # Install the .bashrc
 if [[ -f $HOMEDIR/.bashrc || -h $HOMEDIR/.bashrc ]]; then
+	echo "Saving old .bashrc"
 	mv $HOMEDIR/.bashrc $OLDDIR/.bashrc
 fi
 
@@ -117,6 +121,7 @@ ln -s $INSTALLDIR/.bashrc $HOMEDIR/.bashrc
 
 # Installs the .xsession
 if [[ -f $HOMEDIR/.xsession || -h $HOMEDIR/.xsession ]]; then
+	echo "Saving old .xsession"
 	mv $HOMEDIR/.xsession $OLDDIR/.xsession
 fi
 
@@ -124,6 +129,7 @@ ln -s $INSTALLDIR/.xsession $HOMEDIR/.xsession
 
 # Installs the saved keybindings
 if [[ -f $HOMEDIR/.xbindkeysrc || -h $HOMEDIR/.xbindkeysrc ]]; then
+	echo "Saving old .xbindkeysrc"
 	mv $HOMEDIR/.xbindkeysrc $OLDDIR/.xbindkeysrc
 fi
 
@@ -131,6 +137,12 @@ ln -s $INSTALLDIR/.xbindkeysrc $HOMEDIR/.xbindkeysrc
 
 # Installs the systems font
 if [[ -d $HOMEDIR/.local/share/fonts ]]; then
+	echo "Saving old fonts folder"
+	# Removes old fonts folder
+	if [[ -d $OLDDIR/fonts || -h $OLDDIR/fonts  ]]; then
+		rm -rf $OLDDIR/fonts
+	fi
+
 	mv $HOMEDIR/.local/share/fonts $OLDDIR
 fi
 
@@ -143,5 +155,13 @@ if [[ ! -d $HOMEDIR/.local/share ]]; then
 fi
 
 ln -s $INSTALLDIR/fonts $HOMEDIR/.local/share/fonts
+#Install XDM settings
+
+if [[ -f /etc/X11/xdm/Xresources ]]; then
+	echo "Saving old Xresources file"
+	mv /etc/X11/xdm/Xresources $OLDDIR/Xresources
+fi
+
+ln -s $INSTALLDIR/Xresources /etc/X11/xdm/Xresources
 
 # systemctl enable --now xdm.service
