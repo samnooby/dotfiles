@@ -10,7 +10,9 @@ kitty
 openssh
 pavucontrol
 pulseaudio
+unarchiver
 vim
+xbindkeys
 xf86-video-vesa
 xorg-bdftopcf
 xorg-docs
