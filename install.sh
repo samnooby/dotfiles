@@ -34,6 +34,7 @@ while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
 		INSTALL=False
 		;;
 	-k | --keep-old )
+		echo "WARNING: MERGING OLD CONFIG FILES MAY CAUSE OLD CONFIG SETTINGS TO OVERRIDE NEW SETTINGS"
 		KEEP_OLD=True
 		;;
 esac; shift; done
@@ -66,6 +67,16 @@ if [[ $RESTORE == True ]]; then
 	if [[ -f $OLDDIR/.xsession ]]; then
 		unlink $HOMEDIR/.xsession
 		mv $OLDDIR/.xsession $HOMEDIR
+	fi
+
+	if [[ -f $OLDDIR/.xbindkeysrc ]]; then
+		unlink $HOMEDIR/.xbindkeysrc
+		mv $OLDDIR/.xbindkeysrc $HOMEDIR
+	fi
+
+	if [[ -f $OLDDIR/fonts ]]; then
+		unlink $HOMEDIR/.local/share/fonts
+		mv $OLDDIR/fonts $HOMEDIR/.local/share/fonts
 	fi
 
 	exit
