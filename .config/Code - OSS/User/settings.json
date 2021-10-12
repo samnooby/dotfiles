@@ -1,4 +1,6 @@
 {
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Nebula Oni (Hourglass)"
+    "workbench.colorTheme": "Nebula Oni (Hourglass)",
+    "editor.fontSize": 16,
+    "editor.fontFamily": "'BitstreamVeraSansMono', 'monospace', monospace, 'BitstreamVeraSansMono'"
 }
