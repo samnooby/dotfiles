@@ -111,6 +111,13 @@ fi
 
 ln -s $INSTALLDIR/.xsession $HOMEDIR/.xsession
 
+# Installs the saved keybindings
+if [[ -f $HOMEDIR/.xbindkeysrc || -h $HOMEDIR/.xbindkeysrc ]]; then
+	mv $HOMEDIR/.xbindkeysrc $OLDDIR/.xbindkeysrc
+fi
+
+ln -s $INSTALLDIR/.xbindkeysrc $HOMEDIR/.xbindkeysrc
+
 # Installs the systems font
 if [[ -d $HOMEDIR/.local/share/fonts ]]; then
 	mv $HOMEDIR/.local/share/fonts $OLDDIR
