@@ -110,6 +110,8 @@ if [[ -d $HOMEDIR/.config  ]]; then
 fi
 
 ln -s $INSTALLDIR/.config $HOMEDIR/.config
+chown -R $(logname) $HOMEDIR/.config
+
 
 # Install the .bashrc
 if [[ -f $HOMEDIR/.bashrc || -h $HOMEDIR/.bashrc ]]; then
@@ -155,6 +157,8 @@ if [[ ! -d $HOMEDIR/.local/share ]]; then
 fi
 
 ln -s $INSTALLDIR/fonts $HOMEDIR/.local/share/fonts
+chown -R $(logname) $HOMEDIR/.local
+
 #Install XDM settings
 
 if [[ -f /etc/X11/xdm/Xresources ]]; then
