@@ -12,6 +12,7 @@ pavucontrol
 pulseaudio
 unarchiver
 vim
+qiv
 xbindkeys
 xf86-video-vesa
 xorg-bdftopcf

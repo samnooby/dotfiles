@@ -79,6 +79,14 @@ if [[ $RESTORE == True ]]; then
 		mv $OLDDIR/fonts /usr/local/share/fonts
 	fi
 
+	if [[ -f $OLDDIR/Xresources ]]; then
+		unlink /etc/X11/xdm/Xresources
+		mv $OLDDIR/Xresources /etc/X11/xdm/Xresources
+	fi
+
+	if [[ -f $OLDDIR/Xsetup_0 ]]; then
+		unlink /etc/X11/xdm/Xsetup_0
+		mv $OLDDIR/Xsetup_0 /etc/X11/xdm/Xsetup_0
 	fi
 
 	exit
@@ -157,6 +165,13 @@ if [[ -f /etc/X11/xdm/Xresources ]]; then
 fi
 
 ln -s $INSTALLDIR/Xresources /etc/X11/xdm/Xresources
+
+if [[ -f /etc/X11/xdm/Xsetup_0 ]]; then
+	echo "Saving old Xsetup_0 file"
+	mv /etc/X11/xdm/Xsetup_0 $OLDDIR/Xsetup_0
+fi
+
+ln -s $INSTALLDIR/Xsetup_0 /etc/X11/xdm/Xsetup_0
 
 
 chown -R $(logname) $INSTALLDIR

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/bin/qiv -ym /usr/local/share/backgrounds/*
