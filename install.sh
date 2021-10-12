@@ -80,32 +80,35 @@ fi
 rm -rf $INSTALLDIR/.config
 cp -rT $(pwd)/.config $INSTALLDIR/.config
 
-#Installs all the files and saves all old configs to the olddir
+# Installs config folder in home directory
 if [[ -d $HOMEDIR/.config  ]]; then
-	echo "Saving old .config folder"
+	# Removes old config folder
 	if [[ -d $OLDDIR/.config || -h $OLDDIR/.config  ]]; then
-		echo "Removing saved old config file"
 		rm -rf $OLDDIR/.config
 	fi
+
 	mv $HOMEDIR/.config $OLDDIR/
+
+	# Merges config folders if flag given
 	if [[ $KEEP_OLD == True ]]; then
-		echo "Merging config folder"
 		cp -RT $OLDDIR/.config $INSTALLDIR/.config
 	fi
 fi
 
+ln -s $INSTALLDIR/.config $HOMEDIR/.config
+
+# Install the .bashrc
 if [[ -f $HOMEDIR/.bashrc || -h $HOMEDIR/.bashrc ]]; then
-	echo "Saving old .bashrc"
 	mv $HOMEDIR/.bashrc $OLDDIR/.bashrc
 fi
 
+ln -s $INSTALLDIR/.bashrc $HOMEDIR/.bashrc
+
+# Installs the .xsession
 if [[ -f $HOMEDIR/.xsession || -h $HOMEDIR/.xsession ]]; then
-	echo "Saving old .xsession"
 	mv $HOMEDIR/.xsession $OLDDIR/.xsession
 fi
 
-ln -s $INSTALLDIR/.config $HOMEDIR/.config
-ln -s $INSTALLDIR/.bashrc $HOMEDIR/.bashrc
 ln -s $INSTALLDIR/.xsession $HOMEDIR/.xsession
 
 # systemctl enable --now xdm.service
