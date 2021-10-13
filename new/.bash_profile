@@ -4,4 +4,4 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-/usr/bin/qiv -ym /usr/local/share/backgrounds/*
+/usr/bin/qiv -yr -w 1920 /usr/local/share/backgrounds/*
