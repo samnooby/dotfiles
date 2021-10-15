@@ -84,6 +84,8 @@ if [[ $RESTORE == True ]]; then
 		mv $OLDDIR/backgrounds /usr/local/share/backgrounds
 	fi
 
+	unlink /usr/local/share/arch_logo.xpm
+
 	if [[ -f $OLDDIR/Xresources ]]; then
 		unlink /etc/X11/xdm/Xresources
 		mv $OLDDIR/Xresources /etc/X11/xdm/Xresources
@@ -179,6 +181,7 @@ if [[ -d /usr/local/share/backgrounds ]]; then
 	mv /usr/local/share/backgrounds $OLDDIR
 fi
 
+ln -s $INSTALLDIR/arch_logo.xpm /usr/local/share/arch_logo.xpm
 ln -s $INSTALLDIR/backgrounds /usr/local/share/backgrounds
 
 #Install XDM settings
