@@ -5,5 +5,7 @@
     ./nixos 
     ./hyprland
     ./neovim
+    ./kitty 
+    ./regreet
   ];
 }
