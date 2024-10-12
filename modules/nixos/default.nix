@@ -40,6 +40,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Do Not Change!!
   system.stateVersion = "24.05"; # Did you read the comment?
 }
