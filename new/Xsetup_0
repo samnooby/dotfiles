@@ -1,3 +1,0 @@
-#!/bin/sh
-
-/usr/bin/qiv -yr -w 1920 /usr/local/share/backgrounds/*
