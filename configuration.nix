@@ -8,10 +8,10 @@
     ];
 
   module.hyprland.enable = true;
+  module.neovim.enable = true;
 
   # Installed system packages
   environment.systemPackages = with pkgs; [
-    neovim
     kitty
     greetd.regreet
   ];
