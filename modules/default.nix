@@ -2,10 +2,13 @@
 
 {
   imports = [ 
-    ./nixos 
+    ./nixos
+    ./users
     ./hyprland
     ./neovim
     ./kitty 
     ./regreet
+    ./git
+    ./firefox
   ];
 }

@@ -36,7 +36,10 @@
     allowReboot = true;
     channel = "https://channels.nixos.org/nixos-24.05";
   };
-  
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # Do Not Change!!
   system.stateVersion = "24.05"; # Did you read the comment?
 }
