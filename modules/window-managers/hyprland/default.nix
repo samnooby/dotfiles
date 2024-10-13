@@ -10,9 +10,9 @@ in
     programs.kitty.enable = true;
     wayland.windowManager.hyprland.enable = true;
 
-    wayland.windowManager.hyprland.plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
-    ];
+    # wayland.windowManager.hyprland.plugins = [
+      # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+    # ];
 
     wayland.windowManager.hyprland.settings = {
       "$mod" = "SUPER";
