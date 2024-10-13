@@ -1,7 +1,6 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
-  imports = [
-    
-  ];
+  home.stateVersion = "24.05";
+  imports = [];
 }
