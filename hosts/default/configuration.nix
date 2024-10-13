@@ -25,10 +25,7 @@
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   environment.systemPackages = with pkgs; [
-    vim
     git
     google-chrome
   ];
-
-  environment.variables.EDITOR = "vim";
 }
