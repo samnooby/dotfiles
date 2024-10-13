@@ -1,7 +1,7 @@
 { config, lib, inputs, ... }:
 
 {
-  imports = [ ../../modules/default.nix ];
+  imports = [ ../../managerModules/default.nix ];
 
   config.window-manager.hyprland.enable = true;
 }
