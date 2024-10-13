@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/hyprland
+    ./modules/neovim
   ];
 
   config = {
