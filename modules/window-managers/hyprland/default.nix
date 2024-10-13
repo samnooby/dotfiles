@@ -16,10 +16,19 @@ in
 
     wayland.windowManager.hyprland.settings = {
       "$mod" = "SUPER";
-      bind =
+      "$terminal" = "kitty";
+      
+       bind =
         [
+          # Quick Programs
           "$mod, F, exec, firefox"
-          ", Print, exec, grimblast copy area"
+          "$mod, Q, exec, $terminal"
+          "$mod, C, killactive,"
+          # Switch focus
+          "$mod, left, movefocus, l"
+          "$mod, right, movefocus, r"
+          "$mod, up, movefocus, u"
+          "$mod, down, movefocus, d"
         ]
         ++ (
           # workspaces
