@@ -18,10 +18,16 @@ in
       "$mod" = "SUPER";
       "$terminal" = "kitty";
       
-       bind =
+      monitor = [
+        "eDP-1, 1920x1080@59, 0x0, 1"
+        "HDMI-A-1, 1920x1080@60, -1920x0, 1"
+      ];
+
+      bind =
         [
           # Quick Programs
           "$mod, F, exec, firefox"
+          "$mod, I, exec, google-chrome-stable" 
           "$mod, Q, exec, $terminal"
           "$mod, C, killactive,"
           # Switch focus
