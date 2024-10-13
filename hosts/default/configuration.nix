@@ -19,8 +19,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  # Install firefox.
   programs.firefox.enable = true;
+  programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   environment.systemPackages = with pkgs; [
     vim
