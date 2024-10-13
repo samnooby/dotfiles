@@ -3,6 +3,6 @@
 {
   home.stateVersion = "24.05";
   imports = [
-    ./window-managers/gnome
+    ./window-managers/hyprland
   ];
 }

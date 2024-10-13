@@ -3,5 +3,5 @@
 {
   imports = [ ../../modules/default.nix ];
 
-  config.window-manager.gnome.enabled = true;
+  config.window-manager.hyprland.enable = true;
 }
