@@ -19,8 +19,18 @@ in
       "$terminal" = "kitty";
       
       monitor = [
-        "eDP-1, 1920x1080@59, 0x0, 1"
-        "HDMI-A-1, 1920x1080@60, -1920x0, 1"
+        {
+          name = "eDP-1";
+          resolution = "1920x1080";
+          position = "0x0";
+          scale = "1.0";
+        }
+        {
+          name = "HDMI-A-1";
+          resolution = "1920x1080";
+          position = "-1920x0";
+          scale = "1.0";
+        }
       ];
 
       bind =
