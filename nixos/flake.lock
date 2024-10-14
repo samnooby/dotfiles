@@ -3,18 +3,22 @@
     "aquamarine": {
       "inputs": {
         "hyprutils": [
+          "sam-home-manager",
           "hyprland",
           "hyprutils"
         ],
         "hyprwayland-scanner": [
+          "sam-home-manager",
           "hyprland",
           "hyprwayland-scanner"
         ],
         "nixpkgs": [
+          "sam-home-manager",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "sam-home-manager",
           "hyprland",
           "systems"
         ]
@@ -52,6 +56,7 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
+          "sam-home-manager",
           "hyprland",
           "pre-commit-hooks",
           "nixpkgs"
@@ -74,15 +79,16 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
+          "sam-home-manager",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1728726232,
-        "narHash": "sha256-8ZWr1HpciQsrFjvPMvZl0W+b0dilZOqXPoKa2Ux36bc=",
+        "lastModified": 1728791962,
+        "narHash": "sha256-nr5QiXwQcZmf6/auC1UpX8iAtINMtdi2mH+OkqJQVmU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d57112db877f07387ce7104b5ac346ede556d2d7",
+        "rev": "64c6325b28ebd708653dd41d88f306023f296184",
         "type": "github"
       },
       "original": {
@@ -94,14 +100,17 @@
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
+          "sam-home-manager",
           "hyprland",
           "hyprlang"
         ],
         "nixpkgs": [
+          "sam-home-manager",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "sam-home-manager",
           "hyprland",
           "systems"
         ]
@@ -128,17 +137,17 @@
         "hyprlang": "hyprlang",
         "hyprutils": "hyprutils",
         "hyprwayland-scanner": "hyprwayland-scanner",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "pre-commit-hooks": "pre-commit-hooks",
         "systems": "systems",
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1728752206,
-        "narHash": "sha256-Eid2nnuw318Vra/+FFdmQpQ50Kc60u8HFn4qwxf9mFc=",
+        "lastModified": 1728836804,
+        "narHash": "sha256-h0osFav6gem66yIZYpGruvN7fYAfLIklcK29BuBPLbg=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "1822707c7e7394ce8c7572f2fe890763a307f499",
+        "rev": "5c3bd8e93d9f25be3e16a0445ba6fce8d30b6d73",
         "type": "github"
       },
       "original": {
@@ -150,10 +159,12 @@
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
+          "sam-home-manager",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "sam-home-manager",
           "hyprland",
           "systems"
         ]
@@ -175,14 +186,17 @@
     "hyprlang": {
       "inputs": {
         "hyprutils": [
+          "sam-home-manager",
           "hyprland",
           "hyprutils"
         ],
         "nixpkgs": [
+          "sam-home-manager",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "sam-home-manager",
           "hyprland",
           "systems"
         ]
@@ -204,10 +218,12 @@
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
+          "sam-home-manager",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "sam-home-manager",
           "hyprland",
           "systems"
         ]
@@ -229,10 +245,12 @@
     "hyprwayland-scanner": {
       "inputs": {
         "nixpkgs": [
+          "sam-home-manager",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "sam-home-manager",
           "hyprland",
           "systems"
         ]
@@ -253,15 +271,15 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1728018373,
-        "narHash": "sha256-NOiTvBbRLIOe5F6RbHaAh6++BNjsb149fGZd1T4+KBg=",
-        "owner": "NixOS",
+        "lastModified": 1728492678,
+        "narHash": "sha256-9UTxR8eukdg+XZeHgxW5hQA9fIKHsKCdOIUycTryeVw=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "bc947f541ae55e999ffdb4013441347d83b00feb",
+        "rev": "5633bcff0c6162b9e4b5f1264264611e950c8ec7",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
@@ -285,6 +303,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1728018373,
+        "narHash": "sha256-NOiTvBbRLIOe5F6RbHaAh6++BNjsb149fGZd1T4+KBg=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "bc947f541ae55e999ffdb4013441347d83b00feb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1728492678,
         "narHash": "sha256-9UTxR8eukdg+XZeHgxW5hQA9fIKHsKCdOIUycTryeVw=",
         "owner": "nixos",
@@ -304,6 +338,7 @@
         "flake-compat": "flake-compat",
         "gitignore": "gitignore",
         "nixpkgs": [
+          "sam-home-manager",
           "hyprland",
           "nixpkgs"
         ],
@@ -325,9 +360,25 @@
     },
     "root": {
       "inputs": {
+        "nixpkgs": "nixpkgs",
+        "sam-home-manager": "sam-home-manager"
+      }
+    },
+    "sam-home-manager": {
+      "inputs": {
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-JAHb+1WUvesT8wPMhsKdpjJLWMMHMF+etbonTX/5vys=",
+        "path": "/nix/store/a1zymzycsk6a52hakbml5k7p7phfs7pf-source/home-manager",
+        "type": "path"
+      },
+      "original": {
+        "path": "/nix/store/a1zymzycsk6a52hakbml5k7p7phfs7pf-source/home-manager",
+        "type": "path"
       }
     },
     "systems": {
@@ -348,26 +399,32 @@
     "xdph": {
       "inputs": {
         "hyprland-protocols": [
+          "sam-home-manager",
           "hyprland",
           "hyprland-protocols"
         ],
         "hyprlang": [
+          "sam-home-manager",
           "hyprland",
           "hyprlang"
         ],
         "hyprutils": [
+          "sam-home-manager",
           "hyprland",
           "hyprutils"
         ],
         "hyprwayland-scanner": [
+          "sam-home-manager",
           "hyprland",
           "hyprwayland-scanner"
         ],
         "nixpkgs": [
+          "sam-home-manager",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "sam-home-manager",
           "hyprland",
           "systems"
         ]
