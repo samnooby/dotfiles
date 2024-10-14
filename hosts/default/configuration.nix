@@ -7,22 +7,25 @@
       ../../nixos
     ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  config = {
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sam = {
-    isNormalUser = true;
-    description = "Sam Newby";
-    extraGroups = [ "networkmanager" "wheel" ];
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    users.users.sam = {
+      isNormalUser = true;
+      description = "Sam Newby";
+      extraGroups = [ "networkmanager" "wheel" ];
+    };
+
+    programs.firefox.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      git
+      google-chrome
+      home-manager
+    ];
+
+    modules.fish.enable = true;
+    modules.hyprland.enable = true;
   };
-
-  programs.firefox.enable = true;
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-
-  environment.systemPackages = with pkgs; [
-    git
-    google-chrome
-    home-manager
-  ];
 }
