@@ -5,6 +5,8 @@
     ./modules/hyprland
     ./modules/neovim
     ./modules/fish
+    ./modules/git
+    ./modules/firefox
   ];
 
   config = {
@@ -20,6 +22,8 @@
       hyprland.enable = true;
       neovim.enable = true;
       fish.enable = true;
+      firefox.enable = true;
+      git.enable = true;
     };
   };
 }
