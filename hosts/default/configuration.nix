@@ -18,11 +18,13 @@
     isNormalUser = true;
     description = "Sam Newby";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
   };
 
   programs.firefox.enable = true;
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  programs.fish.enable = true;
 
   environment.systemPackages = with pkgs; [
     git

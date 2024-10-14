@@ -4,6 +4,7 @@
   imports = [
     ./modules/hyprland
     ./modules/neovim
+    ./modules/fish
   ];
 
   config = {
@@ -18,6 +19,7 @@
     modules = {
       hyprland.enable = true;
       neovim.enable = true;
+      fish.enable = true;
     };
   };
 }
