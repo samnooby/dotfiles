@@ -28,6 +28,9 @@
     pulse.enable = true;
   };
 
+  # Program to control light levels
+  programs.light.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
