@@ -1,4 +1,4 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, inputs, system, ... }:
 
 let
   cfg = config.modules.hyprland;
@@ -8,20 +8,19 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.kitty.enable = true;
+
     wayland.windowManager.hyprland = {
       enable = true;
-
       plugins = [
-        # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-        # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
-        # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-        # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+        inputs.hyprland-plugins.packages.${system}.hyprbars
       ];
 
       settings = {
         "$mod" = "SUPER";
         "$terminal" = "kitty";
         
+        debug = 1;
+
         monitor = [
           "eDP-1, 1920x1080, 0x0, 1"
           "HDMI-A-1, 1920x1080, -1920x0, 1"

@@ -8,9 +8,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    
     hyprland.url = "github:hyprwm/Hyprland";
-
+    
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -25,7 +25,7 @@
     {
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs system; };
           modules = [
             ./hosts/default/configuration.nix
 
@@ -33,7 +33,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.sam = import ./home-manager/home.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = { inherit inputs system; };
             }
           ];
         };
@@ -42,7 +42,7 @@
       homeConfigurations = {
         sam = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs system; };
 
           modules = [ ./home-manager/home.nix ];
         };
