@@ -13,6 +13,5 @@ in
         Hyprland
       '';
     };
-    programs.fish.enable = true;  
   };
 }
