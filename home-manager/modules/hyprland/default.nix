@@ -12,15 +12,13 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       plugins = [
-        inputs.hyprland-plugins.packages.${system}.hyprbars
+        # inputs.hyprland-plugins.packages.${system}.hyprbars
       ];
 
       settings = {
         "$mod" = "SUPER";
         "$terminal" = "kitty";
         
-        debug = 1;
-
         monitor = [
           "eDP-1, 1920x1080, 0x0, 1"
           "HDMI-A-1, 1920x1080, -1920x0, 1"
