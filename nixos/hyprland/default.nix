@@ -9,5 +9,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.hyprland.enable = true;
     programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    
+    services.xserver.enable = false;
   };
 }
