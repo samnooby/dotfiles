@@ -14,7 +14,7 @@
     users.users.sam = {
       isNormalUser = true;
       description = "Sam Newby";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "video" ];
     };
 
     nixpkgs.config.allowUnfree = true;
