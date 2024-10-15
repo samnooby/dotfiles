@@ -7,6 +7,7 @@
     ./modules/fish
     ./modules/git
     ./modules/firefox
+    ./modules/vscode
   ];
 
   config = {

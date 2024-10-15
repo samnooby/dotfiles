@@ -15,6 +15,7 @@
       fish.enable = true;
       firefox.enable = true;
       git.enable = true;
+      vscode.enable = true;
     };
   };
 }
