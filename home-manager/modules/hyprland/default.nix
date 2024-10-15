@@ -25,7 +25,13 @@ in
           "eDP-1, 1920x1080, 0x0, 1"
           "HDMI-A-1, 1920x1080, -1920x0, 1"
         ];
-  
+        
+        plugin = {
+          hyprbars = {
+            bar_height = 20;
+          };
+        };
+
         bindel = [
          # Laptop multimedia keys for volume and LCD brightness
           ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
