@@ -1,16 +1,18 @@
 { config, pkgs, lib, ... }:
+with lib;
 
 let
   cfg = config.modules.fish;
+  hyprland-enable = config.modules.hyprland.enable;
 in
 {
-  options.modules.fish.enable = lib.mkEnableOption "Enable fish shell module";
+  options.modules.fish.enable = mkEnableOption "Enable fish shell module";
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     programs.fish = {
       enable = true;
       loginShellInit = ''
-        Hyprland
+        ${optionalString hyprland-enable "Hyprland"}
       '';
     };
   };

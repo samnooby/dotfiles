@@ -32,7 +32,7 @@
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.sam = import ./home-manager/home.nix;
+              home-manager.users.sam = import ./hosts/default/sam.nix;
               home-manager.extraSpecialArgs = { inherit inputs system; };
             }
           ];
@@ -44,7 +44,7 @@
           inherit pkgs;
           extraSpecialArgs = { inherit inputs system; };
 
-          modules = [ ./home-manager/home.nix ];
+          modules = [ ./hosts/default/sam.nix ];
         };
       };
     };

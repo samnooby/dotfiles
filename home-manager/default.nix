@@ -17,13 +17,5 @@
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
-
-    modules = {
-      hyprland.enable = true;
-      neovim.enable = true;
-      fish.enable = true;
-      firefox.enable = true;
-      git.enable = true;
-    };
   };
 }
