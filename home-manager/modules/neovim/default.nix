@@ -1,10 +1,10 @@
 { lib, config, pkgs, inputs, ... }:
 
 let
-  cfg = config.modules.neovim;
+  cfg = config.applications.neovim;
 in
 {
-  options.modules.neovim.enable = lib.mkEnableOption "Enable neovim text editor module";
+  options.applications.neovim.enable = lib.mkEnableOption "Enable neovim text editor module";
 
   config = lib.mkIf cfg.enable {
     programs.neovim = {

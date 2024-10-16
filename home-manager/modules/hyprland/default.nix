@@ -1,20 +1,20 @@
-{ lib, config, inputs, system, ... }:
+{ lib, config, inputs, pkgs, ... }:
 
 let
-  cfg = config.modules.hyprland;
+  cfg = config.applications.hyprland;
 in
 {
-  options.modules.hyprland.enable = lib.mkEnableOption "Enable hyprland window manager module";
+  options.applications.hyprland.enable = lib.mkEnableOption "Enable hyprland window manager module";
 
   config = lib.mkIf cfg.enable {
     programs.kitty.enable = true;
 
     wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages."${system}".hyprland;
+      package = inputs.hyprland.packages."${pkgs.system}".hyprland;
       
       plugins = [
-        inputs.hyprland-plugins.packages.${system}.hyprbars
+        inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
       ];
 
       settings = {

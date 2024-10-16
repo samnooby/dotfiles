@@ -9,7 +9,7 @@
     home.username = "sam";
     home.homeDirectory = "/home/sam";
 
-    modules = {
+    applications = {
       hyprland.enable = true;
       neovim.enable = true;
       fish.enable = true;

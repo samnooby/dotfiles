@@ -2,11 +2,11 @@
 with lib;
 
 let
-  cfg = config.modules.fish;
-  hyprland-enable = config.modules.hyprland.enable;
+  cfg = config.applications.fish;
+  hyprland-enable = config.applications.hyprland.enable;
 in
 {
-  options.modules.fish.enable = mkEnableOption "Enable fish shell module";
+  options.applications.fish.enable = mkEnableOption "Enable fish shell module";
 
   config = mkIf cfg.enable {
     programs.fish = {

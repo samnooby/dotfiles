@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }:
 
 let
-  cfg = config.modules.git;
+  cfg = config.applications.git;
 in
 {
-  options.modules.git.enable = lib.mkEnableOption "Enables git package manager module";
+  options.applications.git.enable = lib.mkEnableOption "Enables git package manager module";
 
   config = lib.mkIf cfg.enable {
     programs.git = {
