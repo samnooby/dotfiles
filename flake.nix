@@ -54,6 +54,15 @@
             ./hosts/default/sam.nix 
           ];
         };
+
+        sam-kahi = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs system; };
+          
+          modules = [ 
+            ./hosts/work/sam-kahi.nix 
+          ];
+	};
       };
     };
 }
