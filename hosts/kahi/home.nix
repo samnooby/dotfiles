@@ -1,7 +1,7 @@
 { ... }:
 {
     system = "aarch64-darwin";
-    username = "kahi";
+    username = "sam";
     homeDirectory = "/Users/kahi";
     config = {
         # applications = {

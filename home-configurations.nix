@@ -30,5 +30,8 @@ let
         ];
     }) homeSetupSettings;
 in {
+    homeSetupSettingsDebug = builtins.trace "homeSetupSettings" homeSetupSettings;
+    homeConfigurationsDebug = builtins.trace "homeConfigurations" homeConfigurations;
+    
     inherit homeConfigurations;
 }
