@@ -1,4 +1,4 @@
-{ hostsDir, inputs, nixpkgs, home-manager, ... }:
+{ hostsDir, inputs, nixpkgs, home-manager, allowed-unfree-packages, ... }:
 with builtins;
 
 let
@@ -12,7 +12,7 @@ let
         pkgs = inputs.nixpkgs.legacyPackages.${setup.system};
     in home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = { inherit inputs allowed-unfree-packages; };
 
         modules = [
             ./home-manager

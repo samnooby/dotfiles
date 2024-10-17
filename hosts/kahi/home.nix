@@ -4,13 +4,13 @@
     username = "sam";
     homeDirectory = "/Users/sam";
     config = {
-        # applications = {
-        #     hyprland.enable = false;
-        #     neovim.enable = false;
-        #     fish.enable = false;
-        #     firefox.enable = false;
+        applications = {
+            hyprland.enable = false;
+            neovim.enable = true;
+            fish.enable = true;
+            firefox.enable = false;
         #     git.enable = false;
-        #     vscode.enable = false;
-        # };
+            vscode.enable = true;
+        };
     };
 }

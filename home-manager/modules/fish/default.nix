@@ -15,5 +15,7 @@ in
         ${optionalString hyprland-enable "Hyprland"}
       '';
     };
+
+    home.sessionVariables.SHELL = "${pkgs.fish}/bin/fish";
   };
 }
