@@ -5,19 +5,19 @@
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
       
       home-manager = {
-          url = "github:nix-community/home-manager";
-          inputs.nixpkgs.follows = "nixpkgs";
-      };
-
-      hyprland = {
-        url = "github:hyprwm/Hyprland?tag=v0.44.0";
+        url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      hyprland-plugins = {
-        url = "github:hyprwm/hyprland-plugins?tag=v0.44.0";
-        inputs.hyprland.follows = "hyprland";
-      };
+      # hyprland = {
+      #   url = "github:hyprwm/Hyprland?tag=v0.44.0";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      # };
+
+      # hyprland-plugins = {
+      #   url = "github:hyprwm/hyprland-plugins?tag=v0.44.0";
+      #   inputs.hyprland.follows = "hyprland";
+      # };
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:

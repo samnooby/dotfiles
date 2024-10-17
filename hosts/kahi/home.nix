@@ -1,9 +1,9 @@
 { ... }:
 {
-    system = "aarch64-darwin";
-    username = "sam";
-    homeDirectory = "/Users/kahi";
-    config = {
+    # system = "aarch64-darwin";
+    # username = "sam";
+    # homeDirectory = "/Users/kahi";
+    # config = {
         # applications = {
         #     hyprland.enable = false;
         #     neovim.enable = false;
@@ -12,5 +12,5 @@
         #     git.enable = false;
         #     vscode.enable = false;
         # };
-    };
+    # };
 }
