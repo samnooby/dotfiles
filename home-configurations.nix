@@ -15,7 +15,7 @@ let
         extraSpecialArgs = { inherit inputs; };
 
         modules = [
-            ./home-manager
+            ./home.nix
             {
                 config = setup.config;
             }
@@ -23,8 +23,6 @@ let
                 home = {
                     username = setup.username;
                     homeDirectory = setup.homeDirectory;
-                    packages = [ pkgs.home-manager ];
-                    stateVersion = "24.05";
                 };
             }
         ];
@@ -32,6 +30,6 @@ let
 in {
     homeSetupSettingsDebug = builtins.trace "homeSetupSettings" homeSetupSettings;
     homeConfigurationsDebug = builtins.trace "homeConfigurations" homeConfigurations;
-    
+
     inherit homeConfigurations;
 }
