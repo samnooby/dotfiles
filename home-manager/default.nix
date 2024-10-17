@@ -2,12 +2,12 @@
 
 {
   imports = [
-    ./modules/hyprland
-    ./modules/neovim
-    ./modules/fish
-    ./modules/git
-    ./modules/firefox
-    ./modules/vscode
+    # ./modules/hyprland
+    # ./modules/neovim
+    # ./modules/fish
+    # ./modules/git
+    # ./modules/firefox
+    # ./modules/vscode
   ];
 
   config = {

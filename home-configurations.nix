@@ -15,6 +15,7 @@ let
         extraSpecialArgs = { inherit inputs; };
 
         modules = [
+            ./home-manager
             {
                 config = setup.config;
             }
