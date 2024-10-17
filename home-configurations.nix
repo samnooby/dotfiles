@@ -9,20 +9,22 @@ let
     # Import each of the home configurations
     homeSetupSettings = mapAttrs (name: value: import value {}) filteredHomeConfigPaths;
     homeConfigurations = mapAttrs (name: setup: let 
-        pkgs = inputs.nixpkgs.legacyPackages."aarch64-darwin";
+        pkgs = inputs.nixpkgs.legacyPackages.${setup.system};
     in home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit inputs; };
 
         modules = [
-            # ./home.nix
-            # {
-                # config = setup.config;
-            # }
+            ./home-manager
+            {
+                config = setup.config;
+            }
             {
                 home = {
-                    username = "sam";
-                    homeDirectory = "/Users/sam";
+                    username = setup.username;
+                    homeDirectory = setup.homeDirectory;
+                    packages = [ pkgs.home-manager ];
+                    stateVersion = "24.05";
                 };
             }
         ];
