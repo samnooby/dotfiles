@@ -3,18 +3,20 @@ with builtins;
 
 let
     # Get the existing home config paths
-    hostHomeConfigPaths = mapAttrs (name: value: "${toString config.hostsDir}/${name}/home.nix") (readDir config.hostsDir);
+    hostHomeConfigPaths = mapAttrs (name: value: "${toString hostsDir}/${name}/home.nix") (readDir hostsDir);
     hostsWithoutHomeConfig = filter (name: !pathExists (getAttr name hostHomeConfigPaths)) (attrNames hostHomeConfigPaths);
     filteredHomeConfigPaths = removeAttrs hostHomeConfigPaths hostsWithoutHomeConfig;
     # Import each of the home configurations
-    homeSetupSettings = mapAttrs (name: value: import value) filteredHomeConfigPaths;
+    homeSetupSettings = mapAttrs (name: value: import value {}) filteredHomeConfigPaths;
     homeConfigurations = mapAttrs (name: setup: home-manager.lib.homeManagerConfiguration {
         inherit (nixpkgs.legacyPackages.${setup.system}) pkgs;
         extraSpecialArgs = { inherit inputs; };
 
         modules = [
             {
-                inherit (value.config) config;
+                inherit (setup.config) config;
+            }
+            {
                 home = {
                     username = setup.username;
                     homeDirectory = setup.homeDirectory;
