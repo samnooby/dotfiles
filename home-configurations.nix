@@ -8,13 +8,15 @@ let
     filteredHomeConfigPaths = removeAttrs hostHomeConfigPaths hostsWithoutHomeConfig;
     # Import each of the home configurations
     homeSetupSettings = mapAttrs (name: value: import value {}) filteredHomeConfigPaths;
-    homeConfigurations = mapAttrs (name: setup: home-manager.lib.homeManagerConfiguration {
-        inherit (nixpkgs.legacyPackages.${setup.system}) pkgs;
+    homeConfigurations = mapAttrs (name: setup: let 
+        pkgs = inputs.nixpkgs.legacyPackages.${setup.system};
+    in home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
         extraSpecialArgs = { inherit inputs; };
 
         modules = [
             {
-                inherit (setup.config) config;
+                config = setup.config;
             }
             {
                 home = {
