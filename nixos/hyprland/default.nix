@@ -1,10 +1,10 @@
 { config, pkgs, inputs, lib, system, ... }:
 
 let
-  cfg = config.modules.hyprland;
+  cfg = config.applications.hyprland;
 in
 {
-  options.modules.hyprland.enable = lib.mkEnableOption "Enable hypland window manager module";
+  options.applications.hyprland.enable = lib.mkEnableOption "Enable hypland window manager module";
 
   config = lib.mkIf cfg.enable {
     programs.hyprland = {

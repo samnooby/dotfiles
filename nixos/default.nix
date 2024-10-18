@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, nixpkgs, inputs, ... }:
 
 {
   imports = [
@@ -6,4 +6,10 @@
     ./fish
     ./hyprland
   ];
+
+  config = {
+    nixpkgs.config = {
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+    };
+  };
 }

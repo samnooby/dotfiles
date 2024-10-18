@@ -2,11 +2,11 @@
 with builtins;
 
 let
-    # Get the existing home config paths
+    # Get the existing setup config paths
     hostHomeConfigPaths = mapAttrs (name: value: "${toString hostsDir}/${name}/home.nix") (readDir hostsDir);
     hostsWithoutHomeConfig = filter (name: !pathExists (getAttr name hostHomeConfigPaths)) (attrNames hostHomeConfigPaths);
     filteredHomeConfigPaths = removeAttrs hostHomeConfigPaths hostsWithoutHomeConfig;
-    # Import each of the home configurations
+    # Import each of the setup configurations
     homeSetupSettings = mapAttrs (name: value: import value {}) filteredHomeConfigPaths;
     homeConfigurations = mapAttrs (name: setup: let 
         pkgs = inputs.nixpkgs.legacyPackages.${setup.system};
@@ -30,8 +30,5 @@ let
         ];
     }) homeSetupSettings;
 in {
-    homeSetupSettingsDebug = builtins.trace "homeSetupSettings" homeSetupSettings;
-    homeConfigurationsDebug = builtins.trace "homeConfigurations" homeConfigurations;
-
     inherit homeConfigurations;
 }

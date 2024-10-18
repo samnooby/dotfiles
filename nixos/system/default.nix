@@ -31,5 +31,7 @@
   # Program to control light levels
   programs.light.enable = true;
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   system.stateVersion = "24.05"; # Did you read the comment?
 }
