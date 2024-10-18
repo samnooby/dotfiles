@@ -12,7 +12,7 @@ in
         name = lib.mkOption {
             type = lib.types.str;
             description = "The base16 theme to use";
-            default = "deep-oceanic-next";
+            default = "oceanicnext";
         };
     };
 
@@ -20,6 +20,7 @@ in
         stylix = {
             enable = true;
             image = cfg.wallpaper;
+            # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
             base16Scheme = "${pkgs.base16-schemes}/share/themes/${cfg.name}.yaml";
         };
     };

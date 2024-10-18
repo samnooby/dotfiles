@@ -6,7 +6,7 @@
     config = {
         theme = {
             wallpaper = ./wallpaper.png;
-            name = "deep-oceanic-next";
+            name = "oceanicnext";
         };
         applications = {
             hyprland.enable = false;
