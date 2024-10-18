@@ -18,6 +18,16 @@ in
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
       '';
+
+      plugins = [
+        {
+          plugin = pkgs.vimPlugins.telescope-nvim;
+          type = "lua";
+          config = ''
+            ${builtins.readFile ./plugins/telescope.lua}
+          '';
+        }
+      ];
     };
   };
 }
