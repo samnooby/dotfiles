@@ -33,10 +33,11 @@
       };
 
       nixosConfigurations = import ./nixos-configurations.nix {
-        inherit hostDir inputs nixpkgs home-manager allowed-unfree-packages;
+        inherit hostsDir inputs nixpkgs home-manager allowed-unfree-packages;
       };
     in
     {
-      inherit (homeConfigurations) homeConfigurations (nixosConfigurations) nixosConfigurations;
+      inherit (homeConfigurations) homeConfigurations;
+      inherit (nixosConfigurations) nixosConfigurations;
     };
 }

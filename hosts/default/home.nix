@@ -1,8 +1,8 @@
 { ... }:
 {
-    system = "aarch64-darwin";
+    system = "x86_64-linux";
     username = "sam";
-    homeDirectory = "/Users/sam";
+    homeDirectory = "/home/sam";
     config = {
         applications = {
             hyprland.enable = true;

@@ -1,27 +1,28 @@
-{ hostDir, inputs, nixpkgs, home-manager, allowed-unfree-packages, ... }:
+{ hostsDir, inputs, nixpkgs, home-manager, allowed-unfree-packages, ... }:
 with builtins;
 
 let
-    hostsDirContent = attrNames readDir hostDir;
+    hostsDirContent = attrNames (readDir hostsDir);
     hosts = filter (hostName :
-        pathExists "${toString hostDir}/${hostName}/hardware-configuration.nix" &&
-        pathExists "${toString hostDir}/${hostName}/home.nix"
+        pathExists "${toString hostsDir}/${hostName}/hardware-configuration.nix" &&
+        pathExists "${toString hostsDir}/${hostName}/home.nix"
     ) hostsDirContent;
-    nixosConfigurations = mapAttrs (name: let 
-        setup = import "${toString hostDir}/${name}/home.nix" {};
-        pkgs = nixpkgs.legacyPackages.${setup.system};
-    in pkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+    hostsSet = listToAttrs (map (host: { name = host; value = ""; }) hosts);
+    nixosConfigurations = mapAttrs (name: value: let 
+        setup = import "${toString hostsDir}/${name}/home.nix" {};
+    in nixpkgs.lib.nixosSystem {
+        system = setup.system;
+        specialArgs = { inherit inputs allowed-unfree-packages; };
 
         modules = [
-            "${toString hostDir}/${name}/hardware-configuration.nix"
+            "${toString hostsDir}/${name}/hardware-configuration.nix"
             ./nixos
             home-manager.nixosModules.home-manager {
                 home-manager = {
                     useGlobalPkgs = true;
                     useUserPackages = true;
-                    extraSpecialArgs = { inherit inputs system; };
-                    "${setup.username}" = { pkgs, ... }: {
+                    extraSpecialArgs = { inherit inputs allowed-unfree-packages; };
+                    users."${setup.username}" = { pkgs, ... }: {
                         imports = [./home-manager];
 
                         config = {
@@ -43,7 +44,7 @@ let
                 };
             }
         ];
-    });
+    }) hostsSet;
 in
 {
     inherit nixosConfigurations;

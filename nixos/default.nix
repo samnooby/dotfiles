@@ -1,4 +1,4 @@
-{ config, nixpkgs, inputs, ... }:
+{ config, nixpkgs, inputs, lib, allowed-unfree-packages, ... }:
 
 {
   imports = [
