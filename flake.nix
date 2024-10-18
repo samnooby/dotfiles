@@ -25,7 +25,6 @@
     outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
     let
       hostsDir = ./hosts;
-      # Thank you https://stackoverflow.com/a/77737026
       allowed-unfree-packages = [
         "vscode"
         "vscode-extension-github-copilot"
