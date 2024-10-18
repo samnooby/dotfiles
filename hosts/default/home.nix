@@ -5,11 +5,11 @@
     homeDirectory = "/Users/sam";
     config = {
         applications = {
-            hyprland.enable = false;
+            hyprland.enable = true;
             neovim.enable = true;
             fish.enable = true;
             firefox.enable = false;
-        #     git.enable = false;
+            git.enable = true;
             vscode.enable = true;
         };
     };

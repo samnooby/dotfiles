@@ -5,7 +5,7 @@
     ./modules/hyprland
     ./modules/neovim
     ./modules/fish
-    # ./modules/git
+    ./modules/git
     ./modules/firefox
     ./modules/vscode
   ];
