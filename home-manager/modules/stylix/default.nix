@@ -20,7 +20,7 @@ in
         stylix = {
             enable = true;
             image = cfg.wallpaper;
-            # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+            polarity = "dark";
             base16Scheme = "${pkgs.base16-schemes}/share/themes/${cfg.name}.yaml";
         };
     };

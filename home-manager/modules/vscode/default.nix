@@ -9,6 +9,12 @@ in
   config = lib.mkIf cfg.enable {
     programs.vscode = {
       enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+        github.copilot
+        github.copilot-chat
+        pkief.material-icon-theme
+      ];
     };
   };
 }

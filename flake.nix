@@ -28,6 +28,8 @@
       # Thank you https://stackoverflow.com/a/77737026
       allowed-unfree-packages = [
         "vscode"
+        "vscode-extension-github-copilot"
+        "vscode-extension-github-copilot-chat"
       ];
 
       homeConfigurations = import ./home-configurations.nix {
