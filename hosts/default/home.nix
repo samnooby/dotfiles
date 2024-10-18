@@ -6,11 +6,17 @@
     config = {
         applications = {
             hyprland.enable = true;
-            neovim.enable = true;
             fish.enable = true;
             firefox.enable = false;
+	          neovim.enable = true;
             git.enable = true;
             vscode.enable = true;
         };
+    };
+    nixos-config = {
+      applications = {
+        hyprland.enable = true;
+        fish.enable = true;
+      };
     };
 }

@@ -14,10 +14,10 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      hyprland-plugins = {
-        url = "github:hyprwm/hyprland-plugins?tag=v0.44.0";
-        inputs.hyprland.follows = "hyprland";
-      };
+      # hyprland-plugins = {
+        # url = "github:hyprwm/hyprland-plugins?tag=v0.44.0";
+        # inputs.hyprland.follows = "hyprland";
+      # };
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:

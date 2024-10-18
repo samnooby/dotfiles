@@ -14,7 +14,7 @@ in
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
       
       plugins = [
-        inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+        # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
       ];
 
       settings = {

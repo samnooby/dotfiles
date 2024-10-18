@@ -7,16 +7,23 @@ let
         pathExists "${toString hostsDir}/${hostName}/hardware-configuration.nix" &&
         pathExists "${toString hostsDir}/${hostName}/home.nix"
     ) hostsDirContent;
-    hostsSet = listToAttrs (map (host: { name = host; value = ""; }) hosts);
+    hostsSet = listToAttrs (map (host: { 
+      name = "nixos-${host}"; 
+      value = { home-path = "${toString hostsDir}/${host}/home.nix"; hardware-path = "${toString hostsDir}/${host}/hardware-configuration.nix"; }; 
+    }) hosts);
     nixosConfigurations = mapAttrs (name: value: let 
-        setup = import "${toString hostsDir}/${name}/home.nix" {};
+        setup = import "${value.home-path}" {};
     in nixpkgs.lib.nixosSystem {
         system = setup.system;
         specialArgs = { inherit inputs allowed-unfree-packages; };
 
+
         modules = [
-            "${toString hostsDir}/${name}/hardware-configuration.nix"
+            "${value.hardware-path}"
             ./nixos
+            {
+                config = setup.nixos-config; 
+            }
             home-manager.nixosModules.home-manager {
                 home-manager = {
                     useGlobalPkgs = true;
