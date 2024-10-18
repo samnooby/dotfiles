@@ -8,6 +8,7 @@
     ./modules/git
     ./modules/firefox
     ./modules/vscode
+    ./modules/stylix
   ];
 
   nixpkgs.config = {

@@ -14,13 +14,15 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      # hyprland-plugins = {
-        # url = "github:hyprwm/hyprland-plugins?tag=v0.44.0";
-        # inputs.hyprland.follows = "hyprland";
-      # };
+      hyprland-plugins = {
+        url = "github:hyprwm/hyprland-plugins?tag=v0.44.0";
+        inputs.hyprland.follows = "hyprland";
+      };
+
+      stylix.url = "github:danth/stylix";
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
     let
       hostsDir = ./hosts;
       # Thank you https://stackoverflow.com/a/77737026
@@ -29,11 +31,11 @@
       ];
 
       homeConfigurations = import ./home-configurations.nix {
-        inherit inputs nixpkgs home-manager hostsDir allowed-unfree-packages;
+        inherit inputs nixpkgs home-manager hostsDir allowed-unfree-packages stylix;
       };
 
       nixosConfigurations = import ./nixos-configurations.nix {
-        inherit hostsDir inputs nixpkgs home-manager allowed-unfree-packages;
+        inherit hostsDir inputs nixpkgs home-manager allowed-unfree-packages stylix;
       };
     in
     {

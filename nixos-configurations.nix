@@ -1,4 +1,4 @@
-{ hostsDir, inputs, nixpkgs, home-manager, allowed-unfree-packages, ... }:
+{ hostsDir, inputs, nixpkgs, home-manager, allowed-unfree-packages, stylix, ... }:
 with builtins;
 
 let
@@ -30,7 +30,7 @@ let
                     useUserPackages = true;
                     extraSpecialArgs = { inherit inputs allowed-unfree-packages; };
                     users."${setup.username}" = { pkgs, ... }: {
-                        imports = [./home-manager];
+                        imports = [ ./home-manager ];
 
                         config = {
                             home = {
@@ -50,6 +50,7 @@ let
                     extraGroups = [ "networkmanager" "wheel" "video" ];
                 };
             }
+            stylix.nixosModules.stylix
         ];
     }) hostsSet;
 in

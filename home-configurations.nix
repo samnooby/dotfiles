@@ -1,4 +1,4 @@
-{ hostsDir, inputs, nixpkgs, home-manager, allowed-unfree-packages, ... }:
+{ hostsDir, inputs, nixpkgs, home-manager, allowed-unfree-packages, stylix, ... }:
 with builtins;
 
 let
@@ -27,6 +27,7 @@ let
                     stateVersion = "24.05";
                 };
             }
+            stylix.homeManagerModules.stylix
         ];
     }) homeSetupSettings;
 in {
