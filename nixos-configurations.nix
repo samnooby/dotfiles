@@ -8,7 +8,7 @@ let
         pathExists "${toString hostsDir}/${hostName}/home.nix"
     ) hostsDirContent;
     hostsSet = listToAttrs (map (host: { 
-      name = "nixos-${host}"; 
+      name = "${host}"; 
       value = { home-path = "${toString hostsDir}/${host}/home.nix"; hardware-path = "${toString hostsDir}/${host}/hardware-configuration.nix"; }; 
     }) hosts);
     nixosConfigurations = mapAttrs (name: value: let 
