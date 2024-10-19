@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./stylix.nex
+    ./stylix.nix
     ./system
     ./fish
     ./hyprland
