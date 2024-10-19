@@ -50,10 +50,10 @@ in
             "$mod, Q, exec, $terminal"
             "$mod, C, killactive,"
             # Switch focus
-            "$mod, left, movefocus, l"
-            "$mod, right, movefocus, r"
-            "$mod, up, movefocus, u"
-            "$mod, down, movefocus, d"
+            "$mod, h, movefocus, l"
+            "$mod, l, movefocus, r"
+            "$mod, k, movefocus, u"
+            "$mod, j, movefocus, d"
           ]
           ++ (
             # workspaces
@@ -72,21 +72,30 @@ in
             workspace_swipe = true;
             workspace_swipe_fingers = 3;
             workspace_swipe_min_fingers = true;
+            workspace_swipe_distance = 500;
+            workspace_swipe_cancel_ratio = 0.6;
         };
 
         decoration = {
             rounding = 5;
-            inactive_opacity = 0.85;
+            inactive_opacity = 0.90;
         };
 
         input = {
-            sensitivity = 1.05;
+            sensitivity = 0.6;
+            accel_profile = "adaptive";
+            touchpad = {
+                tap-and-drag = true;
+                drag_lock = true;
+            };
         };
 
         general = {
             border_size = 2;
             resize_on_border = true;
             layout = "master";
+            gaps_out = 12;
+            gaps_in = 6;
         };
       };
     };
