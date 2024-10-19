@@ -1,13 +1,14 @@
 { ... }:
-{
+rec {
     system = "aarch64-darwin";
     username = "sam";
     homeDirectory = "/Users/sam";
+    theme = {
+      wallpaper = ./wallpaper.png;
+      name = "woodland";
+    };
     config = {
-        theme = {
-            wallpaper = ./wallpaper.png;
-            name = "woodland";
-        };
+        theme = theme; 
         applications = {
             hyprland.enable = false;
             neovim.enable = true;

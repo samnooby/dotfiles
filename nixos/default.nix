@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./stylix.nex
     ./system
     ./fish
     ./hyprland
