@@ -15,7 +15,6 @@ in
       
       plugins = [
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-        inputs.hyprgrass.packages.${pkgs.system}.default
       ];
 
       settings = {
@@ -68,6 +67,27 @@ in
               )
               9)
           );
+        
+        gestures = {
+            workspace_swipe = true;
+            workspace_swipe_fingers = 3;
+            workspace_swipe_min_fingers = true;
+        };
+
+        decoration = {
+            rounding = 5;
+            inactive_opacity = 0.85;
+        };
+
+        input = {
+            sensitivity = 1.05;
+        };
+
+        general = {
+            border_size = 2;
+            resize_on_border = true;
+            layout = "master";
+        };
       };
     };
   };

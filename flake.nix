@@ -19,11 +19,6 @@
         inputs.hyprland.follows = "hyprland";
       };
 
-      hyprgrass = {
-        url = "github:horriblename/hyprgrass";
-        inputs.hyprland.follows = "hyprland";
-      };
-
       stylix.url = "github:danth/stylix";
     };
 
