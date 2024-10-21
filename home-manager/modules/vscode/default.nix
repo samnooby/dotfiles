@@ -45,7 +45,7 @@ in
         "workbench.layoutControl.enabled" = true;
         "workbench.layoutControl.type" = "both";
         "workbench.sash.size" = 8;
-        "workbench.activityBar.location" = "bottom";
+        "workbench.activityBar.location" = "top";
         "workbench.sideBar.location" = "right";
         "workbench.statusBar.visible" = true;
         "workbench.tree.enableStickyScroll" = true;
@@ -101,6 +101,7 @@ in
         github.copilot
         github.copilot-chat
         pkief.material-icon-theme
+        sswg.swift-lang
       ];
     };
   };
