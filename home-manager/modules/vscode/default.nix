@@ -9,6 +9,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.vscode = {
       enable = true;
+      mutableExtensionsDir = false;
       userSettings = {
         "debug.toolBarLocation" = "docked";
 
