@@ -103,6 +103,7 @@ in
         github.copilot-chat
         pkief.material-icon-theme
         sswg.swift-lang
+        vadimcn.vscode-lldb
       ];
     };
   };
