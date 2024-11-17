@@ -20,7 +20,6 @@ with builtins;
 
   environment.variables = {
     XDG_RUNTIME_DIR = "/run/user/1000";
-    DBUS_SESSION_BUS_ADDRESS = "unix:path=${toString (getEnv "XDG_RUNTIME_DIR")}/bus";
   };
 
   programs.sway.enable = true;
@@ -30,10 +29,10 @@ with builtins;
     #   XDG_RUNTIME_DIR = "${config.home.homeDirectory}/.run";
     # };
     
-    home.activation = {
-     startDbus = lib.hm.dag.entryAfter ["sessionVariables"] ''
-        eval $(dbus-launch)
-     '';
-    };
+    # home.activation = {
+    # startDbus = lib.hm.dag.entryAfter ["sessionVariables"] ''
+    #    eval $(dbus-launch)
+    # '';
+    # };
   };
 }
