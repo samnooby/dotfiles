@@ -4,6 +4,9 @@
   programs.fish = {
     enable = true;
     loginShellInit = '' 
+      dbus-launch
+      dbus-launch
+      kitty
     '';
     promptInit = ''
       function fish_prompt

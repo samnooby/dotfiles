@@ -2,7 +2,7 @@
 
 {
   imports = [
-    # ./shell/fish.nix
+    ./shell/fish.nix
     ./neovim
     ./tmux.nix
     ./theme/stylix.nix
