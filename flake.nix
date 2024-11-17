@@ -1,46 +1,33 @@
 {
-    description = "Sam Newby's Nix Configuration";
-    
-    inputs = {
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-      
-      home-manager = {
-        url = "github:nix-community/home-manager";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+  description = "Sam's NixOS Build";
 
-      hyprland = {
-        url = "github:hyprwm/Hyprland?tag=v0.44.0";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-      hyprland-plugins = {
-        url = "github:hyprwm/hyprland-plugins?tag=v0.44.0";
-        inputs.hyprland.follows = "hyprland";
-      };
-
-      stylix.url = "github:danth/stylix";
+    home-manager = {
+      url = github:nix-community/home-manager;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
-    let
-      hostsDir = ./hosts;
-      allowed-unfree-packages = [
-        "vscode"
-        "vscode-extension-github-copilot"
-        "vscode-extension-github-copilot-chat"
-      ];
+    stylix.url = "github:danth/stylix";
+  };
 
-      homeConfigurations = import ./home-configurations.nix {
-        inherit inputs nixpkgs home-manager hostsDir allowed-unfree-packages stylix;
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: 
+  let
+    username = "sam";
+  in
+  {
+    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {
+	inputs = inputs;
+	home-manager = home-manager;
+	username = username;
       };
-
-      nixosConfigurations = import ./nixos-configurations.nix {
-        inherit hostsDir inputs nixpkgs home-manager allowed-unfree-packages stylix;
-      };
-    in
-    {
-      inherit (homeConfigurations) homeConfigurations;
-      inherit (nixosConfigurations) nixosConfigurations;
+      modules = [ 
+        ./configuration.nix 
+        stylix.nixosModules.stylix
+     ];
     };
+  };
 }
