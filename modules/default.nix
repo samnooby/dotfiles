@@ -6,8 +6,8 @@
     ./neovim
     ./tmux.nix
     ./theme/stylix.nix
-    ./theme/font.nix
-    ./xterm.nix
     ./git.nix
+    ./kitty.nix
+    ./wayland.nix
   ];
 }

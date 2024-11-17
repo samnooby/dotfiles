@@ -19,7 +19,7 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
-    { import = "lazyvim.plugins.extras.lang.nix" },
+    -- { import = "lazyvim.plugins.extras.lang.nix" },
     { import = "plugins" },
   },
   defaults = {
@@ -37,15 +37,15 @@ require("lazy").setup({
   }, -- automatically check for plugin updates
   performance = {
     reset_packpath = false;
-    rtp = {
+    --rtp = {
       -- disable some rtp plugins
-      disabled_plugins = {
-        "gzip",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      },
-    },
+      -- disabled_plugins = {
+      --  "gzip",
+      --  "tarPlugin",
+      --  "tohtml",
+      --  "tutor",
+      --  "zipPlugin",
+      --},
+    --},
   },
 })

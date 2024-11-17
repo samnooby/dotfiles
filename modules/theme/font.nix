@@ -2,10 +2,17 @@
 
 {
   fonts = {
-    fontDir.enable = true;
-    fontconfig.enable = true;
+    enableDefaultPackages = true;
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "Monoid" ]; })
     ];
+
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "Monoid" ];
+        sansSerif = [ "Monoid" ];
+        serif = [ "Monoid" ];
+      };
+    };
   };
 }
