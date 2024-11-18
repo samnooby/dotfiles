@@ -40,6 +40,7 @@ in
       nodejs_22
       cargo
       unzip
+      nixfmt-rfc-style
     ];
 
     programs.neovim = {
