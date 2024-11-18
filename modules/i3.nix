@@ -7,7 +7,8 @@
   };
 
   services.displayManager = {
-    defaultSession = "none+i3";
+    enable = true;
+    execCmd = "i3";
   };
   
   home-manager.users.${username} = {
