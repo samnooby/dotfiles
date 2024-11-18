@@ -44,6 +44,7 @@ in
       unzip
       nixfmt-rfc-style
       stylua
+      lua53Packages.lua-lsp
     ];
 
     programs.neovim = {
