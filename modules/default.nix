@@ -7,7 +7,6 @@
     ./tmux.nix
     ./theme/stylix.nix
     ./git.nix
-    ./kitty.nix
-    ./wayland.nix
+    ./alacritty.nix
   ];
 }
