@@ -1,4 +1,4 @@
-local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
+local parser_install_dir = "~/.local/share/nvim/nix/treesitters/"
 vim.fn.mkdir(parser_install_dir, "p")
 vim.opt.runtimepath:append(parser_install_dir)
 
