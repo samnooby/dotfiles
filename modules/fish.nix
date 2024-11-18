@@ -7,7 +7,7 @@
   users.users.${username}.shell = pkgs.fish;
 
   environment.systemPackages = [
-    pkgs.screenfetch
+    pkgs.fortune
   ];
 
   home-manager.users.${username} = {
@@ -15,7 +15,7 @@
       enable = true;
       interactiveShellInit = ''
         function fish_greeting
-          screenfetch
+          fortune
         end
       '';
       plugins = [
