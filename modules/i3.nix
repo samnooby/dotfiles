@@ -2,25 +2,20 @@
 
 {
   services.xserver = {
-    enable = true;   
-    desktopManager = {
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-      };
-    };
+    enable = true;
     windowManager.i3.enable = true;
   };
-  services.displayManager.defaultSession = "xfce";
 
+  services.displayManager = {
+    defaultSession = "none+i3";
+  };
+  
   home-manager.users.${username} = {
     xsession.windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
       config = {
-        terminal = "alacritty";
+        modifier = "Mod4";
         gaps = {
           inner = 10;
           outer = 5;
