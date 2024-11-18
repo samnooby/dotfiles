@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 let
-  monoidFont = pkgs.nerdfonts.override { fonts = ["HeavyData"]; };
+  monoidFont = pkgs.nerdfonts.override { fonts = ["Monoid"]; };
 in
 {
   stylix = {
@@ -11,15 +11,15 @@ in
     fonts = {
       monospace = {
         package = monoidFont;
-        name = "HeavyData Nerd Font";
+        name = "Monoid Nerd Font";
       };
       sansSerif = {
         package = monoidFont;
-        name = "HeavyData Nerd Font";
+        name = "Monoid Nerd Font";
       };
       serif = {
         package = monoidFont;
-        name = "HeavyData Nerd Font";
+        name = "Monoid Nerd Font";
       };
     };
   };
