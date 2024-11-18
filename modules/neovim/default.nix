@@ -44,7 +44,7 @@ in
       unzip
       nixfmt-rfc-style
       stylua
-      lua53Packages.lua-lsp
+      lua-language-server
     ];
 
     programs.neovim = {
@@ -53,11 +53,12 @@ in
       vimAlias = true;
       defaultEditor = true;
       withNodeJs = true;
+      coc.enable = false;
       extraLuaConfig = ''
         require("config.lazy")
       '';
       plugins = [
-        # treesitterWithGrammars
+        treesitterWithGrammars
       ];
     };
     home.file."./.config/nvim/" = {
@@ -65,10 +66,10 @@ in
       recursive = true;
     };
 
-    # home.file."./local/share/nvim/nix/nvim-treesitter/" = {
-    #   source = treesitterWithGrammars;
-    #   recursive = true;
-    # };
+    home.file."./local/share/nvim/nix/nvim-treesitter/" = {
+      source = treesitterWithGrammars;
+      recursive = true;
+    };
   };
 
   environment.variables.EDITOR = "nvim";
