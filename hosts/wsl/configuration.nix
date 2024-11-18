@@ -47,7 +47,8 @@ with builtins;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   environment.systemPackages = [
-   pkgs.gcc14
+    pkgs.gcc14
+    pkgs.unzip
   ];
   
   system.stateVersion = "24.05"; # Did you read the comment?
