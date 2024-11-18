@@ -109,7 +109,7 @@ in
             },
           },
           dev = {
-            path = ${packPath},
+            path = "${packPath}",
             patterns = {""},
           },
           install = {
@@ -134,10 +134,10 @@ in
      recursive = true;
     };
 
-    home.file."${packPath}/nvim-treesitter/" = {
-      source = treesitterWithGrammers;
-      recursive = true;
-    };
+    # home.file."${packPath}/nvim-treesitter/" = {
+      #  source = treesitterWithGrammers;
+      # recursive = true;
+    #};
   };
 
   environment.variables.EDITOR = "nvim";
