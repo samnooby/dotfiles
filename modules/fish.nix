@@ -6,7 +6,7 @@
     loginShellInit = '' 
       if not set -q DBUS_SESSION_BUS_ADDRESS
         # Launch DBus and capture output
-        set new_vars (dbus-launch)
+        set new_vars (dbus-launch --exit-with-session)
         
         # Loop through each line of output
         for line in $new_vars
