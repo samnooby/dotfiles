@@ -82,8 +82,7 @@ in {
         plenary-nvim
 
         # Copilot
-        CopilotChat-nvim
-        copilot-lua
+        copilot-vim
         copilot-cmp
 
         # Clipboard
@@ -111,8 +110,6 @@ in {
             { import = "lazyvim.plugins.extras.lsp.neoconf" },
             { import = "lazyvim.plugins.extras.lsp.none-ls" },
             { import = "lazyvim.plugins.extras.editor.telescope" },
-            { import = "lazyvim.plugins.extras.ai.copilot-chat" },
-            { import = "lazyvim.plugins.extras.ai.copilot" },
             { import = "lazyvim.plugins.extras.coding.yanky" },
             -- Languages
             { import = "lazyvim.plugins.extras.lang.nix" },
