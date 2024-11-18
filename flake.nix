@@ -14,24 +14,32 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, nixos-wsl, ... }@inputs: 
-  let
-    username = "sam";
-  in
-  {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-	      inputs = inputs;
-	      home-manager = home-manager;
-	      username = username;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      stylix,
+      nixos-wsl,
+      ...
+    }@inputs:
+    let
+      username = "sam";
+    in
+    {
+      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inputs = inputs;
+          home-manager = home-manager;
+          username = username;
+        };
+        modules = [
+          ./hosts/wsl/configuration.nix
+          stylix.nixosModules.stylix
+          nixos-wsl.nixosModules.default
+          home-manager.nixosModules.default
+        ];
       };
-      modules = [ 
-        ./hosts/wsl/configuration.nix 
-        stylix.nixosModules.stylix
-        nixos-wsl.nixosModules.default
-        home-manager.nixosModules.default
-     ];
     };
-  };
 }

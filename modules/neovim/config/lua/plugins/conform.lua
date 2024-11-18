@@ -18,11 +18,11 @@ return {
   ---@type conform.setupOpts
   opts = {
     -- Set default options
-    default_format_opts = {
-      lsp_format = "fallback",
-    },
+    -- default_format_opts = {
+    --  lsp_format = "fallback",
+    -- },
     -- Set up format-on-save
-    format_on_save = { timeout_ms = 500 },
+    -- format_on_save = { timeout_ms = 500 },
     -- Customize formatters
   },
 }
