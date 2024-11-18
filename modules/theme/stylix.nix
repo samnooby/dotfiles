@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 let
-  monoidFont = pkgs.nerdfonts.override { fonts = ["Monoid"]; };
+  nerdFonts = pkgs.nerdfonts.override { fonts = ["MartianMono" "Hack"]; };
 in
 {
   stylix = {
@@ -10,16 +10,16 @@ in
     base16Scheme = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
     fonts = {
       monospace = {
-        package = monoidFont;
-        name = "Monoid Nerd Font";
+        package = nerdFonts;
+        name = "MartianMono Nerd Font";
       };
       sansSerif = {
-        package = monoidFont;
-        name = "Monoid Nerd Font";
+        package = nerdFonts;
+        name = "Hack Nerd Font";
       };
       serif = {
-        package = monoidFont;
-        name = "Monoid Nerd Font";
+        package = nerdFonts;
+        name = "Hack Nerd Font";
       };
     };
   };
