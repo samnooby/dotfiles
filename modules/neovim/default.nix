@@ -1,21 +1,18 @@
-{
-  username,
-  pkgs,
-  config,
-  ...
-}:
+{ username, pkgs, config, ... }:
 
 let
-  packPath = "${pkgs.vimUtils.packDir config.home-manager.users.${username}.programs.neovim.finalPackage.passthru.packpathDirs}/pack/myNeovimPackages/start";
-in 
-{
+  packPath = "${
+      pkgs.vimUtils.packDir
+      config.home-manager.users.${username}.programs.neovim.finalPackage.passthru.packpathDirs
+    }/pack/myNeovimPackages/start";
+in {
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       nodejs_22
       gcc14
       lua-language-server
       stylua
-      shfmt 
+      shfmt
       nixfmt
       nil
     ];
@@ -27,6 +24,7 @@ in
       defaultEditor = true;
       withNodeJs = true;
 
+      # TODO: test todo
       plugins = with pkgs.vimPlugins; [
         # Base lazyvim pkgs
         LazyVim
@@ -42,7 +40,7 @@ in
         mini-pairs
         mini-ai
         ts-comments-nvim
-        
+
         # Editor pkgs
         neo-tree-nvim
         grug-far-nvim
@@ -82,6 +80,14 @@ in
         # Util
         persistence-nvim
         plenary-nvim
+
+        # Copilot
+        CopilotChat-nvim
+        copilot-lua
+        copilot-cmp
+
+        # Clipboard
+        yanky-nvim
       ];
 
       extraLuaConfig = ''
@@ -101,25 +107,28 @@ in
             missing = false,
           },
           spec = {
-	          { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+            { "LazyVim/LazyVim", import = "lazyvim.plugins" },
             { import = "lazyvim.plugins.extras.lsp.neoconf" },
             { import = "lazyvim.plugins.extras.lsp.none-ls" },
             { import = "lazyvim.plugins.extras.editor.telescope" },
+            { import = "lazyvim.plugins.extras.ai.copilot-chat" },
+            { import = "lazyvim.plugins.extras.ai.copilot" },
+            { import = "lazyvim.plugins.extras.coding.yanky" },
             -- Languages
             { import = "lazyvim.plugins.extras.lang.nix" },
             { import = "plugins" },
           },
-	        defaults = {
-	          lazy = false,
-	          version = false,
-	        },
+          defaults = {
+            lazy = false,
+            version = false,
+          },
         })
       '';
     };
 
     home.file."./.config/nvim/" = {
-     source = ./config;
-     recursive = true;
+      source = ./config;
+      recursive = true;
     };
   };
 
