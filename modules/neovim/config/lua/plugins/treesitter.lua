@@ -6,7 +6,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      auto_install = false,
       parser_install_dir = parser_install_dir,
       ensure_installed = {},
     },

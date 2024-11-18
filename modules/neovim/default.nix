@@ -6,28 +6,6 @@
 }:
 
 let
-  treesitterWithGrammers = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
-    p.lua
-    p.nix
-    p.fish
-    p.comment
-    p.gitattributes
-    p.gitignore
-    p.go
-    p.gomod
-    p.gowork
-    p.python
-    p.markdown
-    p.json
-    p.json5
-    p.dockerfile
-  ]);
-
-  treesitterParsers = pkgs.symlinkJoin {
-    name = "treesitter-parsers";
-    paths = treesitterWithGrammers.dependencies;
-  };
-
   packPath = "${pkgs.vimUtils.packDir config.home-manager.users.${username}.programs.neovim.finalPackage.passthru.packpathDirs}/pack/myNeovimPackages/start";
 in 
 {
@@ -36,6 +14,8 @@ in
       nodejs_22
       gcc14
       lua-language-server
+      stylua
+      shfmt 
     ];
 
     programs.neovim = {
@@ -85,8 +65,8 @@ in
 
         # Treesitter
         which-key-nvim
-        treesitterWithGrammers
         nvim-treesitter-textobjects
+        nvim-treesitter
 
         # UI
         bufferline-nvim
@@ -123,6 +103,8 @@ in
             { import = "lazyvim.plugins.extras.lsp.neoconf" },
             { import = "lazyvim.plugins.extras.lsp.none-ls" },
             { import = "lazyvim.plugins.extras.editor.telescope" },
+            -- Languages
+            { import = "lazyvim.plugins.extras.lang.nix" },
             { import = "plugins" },
           },
 	        defaults = {
@@ -136,11 +118,6 @@ in
     home.file."./.config/nvim/" = {
      source = ./config;
      recursive = true;
-    };
-
-    home.file."./.cache/nvim/treesitters/" = {
-      source = treesitterWithGrammers;
-      recursive = true;
     };
   };
 
