@@ -35,6 +35,7 @@ in
     home.packages = with pkgs; [
       nodejs_22
       gcc14
+      lua-language-server
     ];
 
     programs.neovim = {
