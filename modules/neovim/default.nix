@@ -22,6 +22,13 @@ let
     p.json5
     p.dockerfile
   ]);
+
+  treesitterParsers = pkgs.symlinkJoin {
+    name = "treesitter-parsers";
+    paths = treesitterWithGrammers.dependencies;
+  };
+
+  packPath = "${pkgs.vimUtils.packDir config.home-manager.users.${username}.programs.neovim.finalPackage.passthru.packpathDirs}/pack/myNeovimPackages/start";
 in 
 {
   home-manager.users.${username} = {
@@ -93,6 +100,7 @@ in
 
       extraLuaConfig = ''
         vim.g.mapleader = " "
+        vim.opt.runtimepath:append("${treesitterParsers}")
         require("lazy").setup({
           performance = {
             reset_packpath = false,
@@ -101,10 +109,7 @@ in
             },
           },
           dev = {
-            path = "${
-              pkgs.vimUtils.packDir
-                config.home-manager.users.${username}.programs.neovim.finalPackage.passthru.packpathDirs
-            }/pack/myNeovimPackages/start",
+            path = ${packPath},
             patterns = {""},
           },
           install = {
@@ -127,6 +132,11 @@ in
     home.file."./.config/nvim/" = {
      source = ./config;
      recursive = true;
+    };
+
+    home.file."${packPath}/nvim-treesitter/" = {
+      source = treesitterWithGrammers;
+      recursive = true;
     };
   };
 
