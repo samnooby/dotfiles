@@ -16,6 +16,7 @@ in
       lua-language-server
       stylua
       shfmt 
+      nixfmt
     ];
 
     programs.neovim = {
