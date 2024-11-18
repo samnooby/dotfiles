@@ -67,6 +67,9 @@ in
         gitsigns-nvim
         trouble-nvim
         todo-comments-nvim
+        telescope-nvim
+        dressing-nvim
+        telescope-fzf-native-nvim
 
         # Formatting
         conform-nvim
@@ -118,6 +121,7 @@ in
 	          { "LazyVim/LazyVim", import = "lazyvim.plugins" },
             { import = "lazyvim.plugins.extras.lsp.neoconf" },
             { import = "lazyvim.plugins.extras.lsp.none-ls" },
+            { import = "lazyvim.plugins.extras.editor.telescope" },
             { import = "plugins" },
           },
 	        defaults = {
