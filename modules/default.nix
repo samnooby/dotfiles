@@ -8,6 +8,6 @@
     ./theme/stylix.nix
     ./git.nix
     ./alacritty.nix
-    ./i3.nix
+    ./gnome.nix
   ];
 }

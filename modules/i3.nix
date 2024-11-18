@@ -11,11 +11,6 @@
     windowManager.i3.enable = true;
   };
 
-  services.displayManager = {
-    enable = true;
-    execCmd = "i3";
-  };
-  
   home-manager.users.${username} = {
     xsession.windowManager.i3 = {
       enable = true;
