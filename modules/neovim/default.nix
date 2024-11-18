@@ -6,13 +6,23 @@
 }:
 
 let
-  treesitterWithGrammers = (
-    pkgs.vimPlugins.nvim-treesitter.withPlugins(p: [
-      p.fish
-      p.comment
-    ])
-  );
-in
+  treesitterWithGrammers = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+    p.lua
+    p.nix
+    p.fish
+    p.comment
+    p.gitattributes
+    p.gitignore
+    p.go
+    p.gomod
+    p.gowork
+    p.python
+    p.markdown
+    p.json
+    p.json5
+    p.dockerfile
+  ]);
+in 
 {
   home-manager.users.${username} = {
     home.packages = with pkgs; [
@@ -64,7 +74,7 @@ in
 
         # Treesitter
         which-key-nvim
-        nvim-treesitter.withAllGrammars
+        treesitterWithGrammers
         nvim-treesitter-textobjects
 
         # UI
