@@ -36,7 +36,10 @@ in
 {
   home-manager.users.${username} = {
     home.packages = with pkgs; [
+      gcc14
       nodejs_22
+      cargo
+      unzip
     ];
 
     programs.neovim = {
