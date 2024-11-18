@@ -18,6 +18,7 @@
       withNodeJs = true;
 
       plugins = with pkgs.vimPlugins; [
+        LazyVim
         lazy-nvim
         which-key-nvim
       ];
@@ -42,8 +43,13 @@
             missing = false,
           },
           spec = {
+	    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
             { import = "plugins" },
-          }
+          },
+	  defaults = {
+	    lazy = false,
+	    version = false,
+	  },
         })
       '';
     };
