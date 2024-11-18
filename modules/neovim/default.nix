@@ -1,50 +1,13 @@
-{ username, pkgs, ... }:
-
-let
-in
-# treesitterWithGrammars = (
-#   pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
-#     p.bash
-#     p.comment
-#       p.css
-#       p.dockerfile
-#       p.fish
-#       p.gitattributes
-#       p.gitignore
-#       p.go
-#       p.gomod
-#       p.gowork
-#       p.hcl
-#       p.javascript
-#       p.jq
-#       p.json5
-#       p.json
-#       p.lua
-#       p.make
-#       p.markdown
-#       p.nix
-#       p.python
-#       p.rust
-#       p.toml
-#       p.typescript
-#       p.vue
-#       p.yaml
-#     ])
-#   );
-# treesitter-parsers = pkgs.symlinkJoin {
-#   name = "treesitter-parsers";
-#   paths = treesitterWithGrammars.dependencies;
-# };
+{
+  username,
+  pkgs,
+  config,
+  ...
+}:
 {
   home-manager.users.${username} = {
     home.packages = with pkgs; [
-      gcc14
       nodejs_22
-      cargo
-      unzip
-      nixfmt-rfc-style
-      stylua
-      lua-language-server
     ];
 
     programs.neovim = {
@@ -53,23 +16,42 @@ in
       vimAlias = true;
       defaultEditor = true;
       withNodeJs = true;
-      coc.enable = false;
-      extraLuaConfig = ''
-        require("config.lazy")
-      '';
-      plugins = [
-        # treesitterWithGrammars
+
+      plugins = with pkgs.vimPlugins; [
+        lazy-nvim
+        which-key-nvim
       ];
+
+      extraLuaConfig = ''
+        vim.g.mapleader = " "
+        require("lazy").setup({
+          performance = {
+            reset_packpath = false,
+            rtp = {
+              reset = false,
+            },
+          },
+          dev = {
+            path = "${
+              pkgs.vimUtils.packDir
+                config.home-manager.users.${username}.programs.neovim.finalPackage.passthru.packpathDirs
+            }/pack/myNeovimPackages/start",
+            patterns = {""},
+          },
+          install = {
+            missing = false,
+          },
+          spec = {
+            { import = "plugins" },
+          }
+        })
+      '';
     };
+
     home.file."./.config/nvim/" = {
       source = ./config;
       recursive = true;
     };
-
-    # home.file."./local/share/nvim/nix/nvim-treesitter/" = {
-    #  source = treesitterWithGrammars;
-    #  recursive = true;
-    # };
   };
 
   environment.variables.EDITOR = "nvim";
