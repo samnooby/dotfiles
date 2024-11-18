@@ -100,7 +100,6 @@ in
 
       extraLuaConfig = ''
         vim.g.mapleader = " "
-        vim.opt.runtimepath:append("${treesitterParsers}")
         require("lazy").setup({
           performance = {
             reset_packpath = false,
@@ -134,10 +133,10 @@ in
      recursive = true;
     };
 
-    # home.file."${packPath}/nvim-treesitter/" = {
-      #  source = treesitterWithGrammers;
-      # recursive = true;
-    #};
+    home.file."./.cache/nvim/treesitters/" = {
+      source = treesitterWithGrammers;
+      recursive = true;
+    };
   };
 
   environment.variables.EDITOR = "nvim";
