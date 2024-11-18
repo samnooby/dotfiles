@@ -17,6 +17,7 @@ in
       stylua
       shfmt 
       nixfmt
+      nil
     ];
 
     programs.neovim = {
