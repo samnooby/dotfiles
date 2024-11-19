@@ -111,7 +111,6 @@ in {
             { import = "lazyvim.plugins.extras.lsp.none-ls" },
             { import = "lazyvim.plugins.extras.editor.telescope" },
             { import = "lazyvim.plugins.extras.coding.yanky" },
-            { import = "lazyvim.plugins.extras.ai.copilot" },
             -- Languages
             { import = "lazyvim.plugins.extras.lang.nix" },
             { import = "plugins" },
