@@ -21,6 +21,16 @@
       plugins = [
         { name = "tide"; src = pkgs.fishPlugins.tide.src; }
       ];
+      functions = {
+        alac = ''
+          # start dbus and assign variables 
+          set vars (dbus-launch)
+          for line in $vars
+            set splitVars (string split -m1 "=" $line)
+            
+          end
+        '';
+      };
     };
   };
 }

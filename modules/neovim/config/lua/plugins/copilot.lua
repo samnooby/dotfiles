@@ -14,7 +14,7 @@ return {
           enabled = true,
           auto_trigger = true,
           keymap = {
-            accept = false, -- handled by nvim-cmp / blink.cmp
+            accept = "<C-R>",
             next = "<M-]>",
             prev = "<M-[>",
           },
