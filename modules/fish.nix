@@ -27,8 +27,9 @@
           set vars (dbus-launch)
           for line in $vars
             set splitVars (string split -m1 "=" $line)
-            
+            set -Ux $splitVars[1] $splitVars[2]
           end
+          alacritty
         '';
       };
     };
