@@ -24,7 +24,7 @@ in {
       defaultEditor = true;
       withNodeJs = true;
 
-      # TODO: test todo
+      # TODO: All the required lazyvim plugins
       plugins = with pkgs.vimPlugins; [
         # Base lazyvim pkgs
         LazyVim
@@ -84,6 +84,7 @@ in {
         # Copilot
         copilot-lua
         copilot-cmp
+        CopilotChat-nvim
 
         # Clipboard
         yanky-nvim
@@ -111,6 +112,7 @@ in {
             { import = "lazyvim.plugins.extras.lsp.none-ls" },
             { import = "lazyvim.plugins.extras.editor.telescope" },
             { import = "lazyvim.plugins.extras.coding.yanky" },
+            { import = "lazyvim.plugins.extras.ai.copilot-chat" },
             -- Languages
             { import = "lazyvim.plugins.extras.lang.nix" },
             { import = "plugins" },
