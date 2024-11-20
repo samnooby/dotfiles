@@ -36,6 +36,7 @@
         };
         modules = [
           ./hosts/wsl/configuration.nix
+          ./modules
           stylix.nixosModules.stylix
           nixos-wsl.nixosModules.default
           home-manager.nixosModules.default

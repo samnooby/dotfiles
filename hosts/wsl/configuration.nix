@@ -5,7 +5,6 @@ with builtins;
   imports =
     [ 
       ./hardware-configuration.nix
-      ../../modules
     ];
 
   wsl.enable = true;
