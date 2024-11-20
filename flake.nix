@@ -42,5 +42,19 @@
           home-manager.nixosModules.default
         ];
       };
+
+      homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        extraSpecialArgs = {
+          home-manager = home-manager;
+          inputs = inputs;
+        };
+
+        modules = [
+          ./hosts/kahi/configuration.nix
+          ./modules
+        ];
+      };
     };
 }
