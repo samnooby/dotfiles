@@ -1,62 +1,24 @@
 {
-  description = "Sam's NixOS Build";
+  description = "Home Manager configuration of sam";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-
+    # Specify the source of Home Manager and Nixpkgs.
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    stylix.url = "github:danth/stylix";
-
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      stylix,
-      nixos-wsl,
-      ...
-    }@inputs:
+  outputs = { nixpkgs, home-manager, ... }:
     let
-      username = "sam";
-    in
-    {
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inputs = inputs;
-          home-manager = home-manager;
-          username = username;
-        };
-        modules = [
-          ./hosts/wsl/configuration.nix
-          ./modules
-          stylix.nixosModules.stylix
-          nixos-wsl.nixosModules.default
-          home-manager.nixosModules.default
-        ];
-      };
+      system = "aarch64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      homeConfigurations."sam" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-      homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "aarch64-darwin";
-        };
-
-        extraSpecialArgs = {
-          home-manager = home-manager;
-          inputs = inputs;
-        };
-
-        modules = [
-          ./hosts/kahi/configuration.nix
-          ./modules
-        ];
+        modules = [ ./home.nix ];
       };
     };
 }
