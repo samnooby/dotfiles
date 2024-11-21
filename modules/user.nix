@@ -3,6 +3,7 @@ with lib;
 
 let
     cfg = config.user;
+    username = cfg.name;
 in
 {
     options.user = {
@@ -17,12 +18,9 @@ in
             example = "/home/sam";
             description = "The home directory of the default user";
         };
-    }
+    };
 
-    config = let
-        username = cfg.name;
-    in
-    {
+    config = {
         networking.hostName = username;
 
         # Create the default group and user
