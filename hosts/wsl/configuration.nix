@@ -1,4 +1,4 @@
-{ config, lib, pkgs, home-manager, username, ... }:
+{ config, lib, pkgs, home-manager, ... }:
 with builtins;
 
 {
@@ -7,10 +7,12 @@ with builtins;
       ./hardware-configuration.nix
     ];
 
-  wsl.enable = true;
-  wsl.defaultUser = "${username}";
+  user.username = "sam";
+  user.homeDirectory = "/home/sam";
 
-  networking.hostName = "nixos"; # Define your hostname.
+  wsl.enable = true;
+  wsl.defaultUser = "sam";
+
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   time.timeZone = "America/Toronto";
@@ -21,26 +23,6 @@ with builtins;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
-  };
-
-  users.groups.owners.gid = 1001;
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${username} = {
-    isNormalUser = true;
-    uid = 1000;
-    group = "owners";
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-  };
-
-  home-manager = {
-    users.${username} = {
-      home.username = "${username}";
-      home.homeDirectory = "/home/${username}";
-
-      programs.home-manager.enable = true;
-
-      home.stateVersion = "24.05";
-    };
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
