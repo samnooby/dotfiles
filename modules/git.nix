@@ -9,7 +9,7 @@ in {
       default = "sam";
     };
     email = mkOption {
-      type = types.string;
+      type = types.str;
       default = "samjnewby@hotmail.com";
     };
   };
