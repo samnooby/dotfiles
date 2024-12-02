@@ -20,7 +20,6 @@
         g = "git";
         ".." = "cd ..";
         "..." = "cd ../..";
-        "g-amend" = "git add --all; git commit --amend --no-edit;";
       };
       shellAbbrs = { gco = "git checkout"; };
       functions = {
@@ -44,15 +43,17 @@
         '';
         home = ''
           if test (count $argv) -eq 1
-            home-manager switch --flake .#argv[1]
+            home-manager switch --flake .#$argv[1]
           else
             echo "Usage: home <flake name>"
           end
         '';
+        gamend = ''
+          git add --all
+          git commit --amend --no-edit
+        '';
       };
-      interactiveShellInit = ''
-        tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Slanted --powerline_prompt_heads=Sharp --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Disconnected --powerline_right_prompt_frame=No --prompt_spacing=Sparse --icons='Many icons' --transient=No
-      '';
+      interactiveShellInit = "";
       plugins = [{
         name = "tide";
         src = pkgs.fishPlugins.tide.src;
