@@ -20,6 +20,7 @@
         g = "git";
         ".." = "cd ..";
         "..." = "cd ../..";
+        "g-amend" = "git add --all; git commit --amend --no-edit;";
       };
       shellAbbrs = { gco = "git checkout"; };
       functions = {
