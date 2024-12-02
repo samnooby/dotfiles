@@ -19,7 +19,7 @@ in {
       enable = true;
       userEmail = cfg.email;
       userName = cfg.username;
+      extraConfig = { push = { autoSetupRemote = true; }; };
     };
-    extraConfig = { push = { autoSetupRemote = true; }; };
   };
 }
