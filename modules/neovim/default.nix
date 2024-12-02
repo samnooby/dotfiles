@@ -14,7 +14,6 @@
       gcc14
       ripgrep
       fd
-      lazygit
       lua-language-server
       nixfmt-classic
       cargo

@@ -26,4 +26,5 @@
     username = "sam";
     email = "samjnewby@hotmail.com";
   };
+  lazygit.enabled = true;
 }

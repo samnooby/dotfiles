@@ -1,5 +1,6 @@
 { ... }:
 
 {
-  imports = [ ./neovim ./stylix ./fish.nix ./git.nix ./alacritty.nix ];
+  imports =
+    [ ./neovim ./stylix ./fish.nix ./git.nix ./alacritty.nix ./lazygit.nix ];
 }
