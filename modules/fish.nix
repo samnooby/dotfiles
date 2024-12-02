@@ -20,6 +20,7 @@
         g = "git";
         ".." = "cd ..";
         "..." = "cd ../..";
+        ll = "ls -lah";
       };
       shellAbbrs = { gco = "git checkout"; };
       functions = {
