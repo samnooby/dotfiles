@@ -57,6 +57,10 @@ in {
           decorations = "Full"
           opacity = 0.9
           startup_mode = "Fullscreen"
+
+          [terminal.shell]
+          program = "${config.home.homeDirectory}/.nix-profile/bin/fish"
+          args = ["--login"]
         '';
     };
   };
