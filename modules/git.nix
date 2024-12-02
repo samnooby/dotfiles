@@ -25,6 +25,7 @@ in {
         s = "status";
         c = "commit -m";
         ca = "commit -am";
+        p = "push";
       };
     };
   };
