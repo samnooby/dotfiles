@@ -53,9 +53,17 @@
           git add --all
           git commit --amend --no-edit
         '';
+        cdl = ''
+          if test (count $argv) --eq 1
+            cd $argv[1]
+            ls -lah
+          else
+            echo "Usage: cdl <directory>"
+          end
+        '';
       };
-      interactiveShellInit =
-        "\n        tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='12-hour format' --rainbow_prompt_separators=Slanted --powerline_prompt_heads=Slanted --powerline_prompt_tails=Flat --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Disconnected --powerline_right_prompt_frame=No --prompt_spacing=Sparse --icons='Many icons' --transient=No\n      ";
+      shellInitLast =
+        "tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='12-hour format' --rainbow_prompt_separators=Slanted --powerline_prompt_heads=Slanted --powerline_prompt_tails=Flat --powerline_prompt_style='Two lines, character and frame' --prompt_connection=Disconnected --powerline_right_prompt_frame=No --prompt_spacing=Sparse --icons='Many icons' --transient=No\n      ";
       plugins = [{
         name = "tide";
         src = pkgs.fishPlugins.tide.src;
