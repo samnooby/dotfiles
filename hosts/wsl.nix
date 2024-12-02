@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./modules ];
+  imports = [ ../modules ];
 
   home.username = "sam";
   home.homeDirectory = "/home/sam";

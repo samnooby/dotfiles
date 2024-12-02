@@ -11,18 +11,16 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = { nixpkgs, home-manager, stylix, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      homeConfigurations.sam = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+  outputs = { nixpkgs, home-manager, stylix, ... }@inputs: {
+    homeConfigurations.sam = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
 
-        modules = [ 
-          stylix.homeManagerModules.stylix
-          ./home.nix 
-        ];
-      };
+      modules = [ stylix.homeManagerModules.stylix ./hosts/wsl.nix ];
     };
+    homeConfigurations.kahi = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+
+      modules = [ stylix.homeManagerModules.stylix ./hosts/kahi.nix ];
+    };
+  };
 }
