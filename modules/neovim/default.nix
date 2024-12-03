@@ -19,6 +19,7 @@
       cargo
       unzip
       sqlfluff
+      ruff
     ];
 
     programs.neovim = {
