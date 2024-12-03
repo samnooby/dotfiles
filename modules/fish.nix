@@ -57,11 +57,11 @@
           git commit --amend --no-edit
         '';
         cdl = ''
-          if test (count $argv) --eq 1
+          if test (count $argv) -eq 1
             cd $argv[1]
             ls -lah
           else
-            echo "Usage: cdl <directory>"
+            echo "Usage: cdl <target directory>"
           end
         '';
       };
