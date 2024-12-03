@@ -21,7 +21,10 @@
     enabled = true;
     defaultShell = true;
   };
-  alacritty.enabled = true;
+  alacritty = {
+    enabled = true;
+    setShell = true;
+  };
   git = {
     username = "Sam";
     email = "sam@kahi.io";

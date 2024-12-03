@@ -4,9 +4,15 @@ with builtins;
 
 let colors = config.lib.stylix.colors.withHashtag;
 in {
-  options.alacritty.enabled = mkOption {
-    type = types.bool;
-    default = false;
+  options.alacritty = {
+    enabled = mkOption {
+      type = types.bool;
+      default = false;
+    };
+    setShell = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = mkIf config.alacritty.enabled {
@@ -58,9 +64,12 @@ in {
           opacity = 0.9
           startup_mode = "Fullscreen"
 
-          [terminal.shell]
-          program = "${config.home.homeDirectory}/.nix-profile/bin/fish"
-          args = ["--login"]
+          ${if config.alacritty.setShell then ''
+            [terminal.shell]
+            program = "${config.home.homeDirectory}/.nix-profile/bin/fish"
+            args = ["--login"]
+          '' else
+            ""}
         '';
     };
   };
