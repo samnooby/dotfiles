@@ -18,6 +18,7 @@
       nixfmt-classic
       cargo
       unzip
+      sqlfluff
     ];
 
     programs.neovim = {
