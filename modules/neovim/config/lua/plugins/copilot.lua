@@ -1,14 +1,12 @@
 return {
   {
     "hrsh7th/nvim-cmp",
-    keys = {
-      { "<CR>", false },
-      {
-        "<C-e>",
-        function()
-          LazyVim.cmp.confirm({ select = true })
-        end,
-      },
-    },
+    opts = function(_, opts)
+      local cmp = require("cmp")
+
+      opts.mapping = vim.tbl_extend("force", opts.mapping or {}, {
+        ["<CR>"] = cmp.config.disable,
+      })
+    end,
   },
 }
