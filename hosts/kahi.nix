@@ -3,8 +3,8 @@
 {
   imports = [ ../modules ];
 
-  home.username = "sam";
-  home.homeDirectory = "/Users/sam";
+  home.username = "samnewby";
+  home.homeDirectory = "/Users/samnewby";
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
@@ -23,11 +23,11 @@
   };
   alacritty = {
     enabled = true;
-    setShell = true;
+    setShell = false;
   };
   git = {
-    username = "Sam";
-    email = "sam@kahi.io";
+    username = "samnewby";
+    email = "newbysam189@gmail.com";
   };
   lazygit.enabled = true;
 }
