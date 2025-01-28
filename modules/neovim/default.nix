@@ -22,6 +22,11 @@
       ruff
     ];
 
+    programs.fzf = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
     programs.neovim = {
       enable = true;
       viAlias = true;
