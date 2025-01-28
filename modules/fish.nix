@@ -24,6 +24,7 @@
       };
       shellAbbrs = {
         projects = "cd ~/Projects/";
+        work = "cd ~/Work/";
         gco = "git checkout";
       };
       functions = {
