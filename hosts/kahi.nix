@@ -30,4 +30,5 @@
     email = "newbysam189@gmail.com";
   };
   lazygit.enabled = true;
+  tmux.enabled = true;
 }

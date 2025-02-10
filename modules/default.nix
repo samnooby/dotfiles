@@ -9,5 +9,6 @@
     ./alacritty.nix
     ./lazygit.nix
     ./aerospace.nix
+    ./tmux.nix
   ];
 }
